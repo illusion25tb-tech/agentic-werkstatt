@@ -90,8 +90,9 @@ def test_fehlendes_feld_wird_benannt(monkeypatch, tmp_path):
 
 
 def test_list_files_falsches_verzeichnis():
-    from tools import list_files
     import pytest
+
+    from tools import list_files
     with pytest.raises(FileNotFoundError, match="ohne"):
         list_files("workspace/")
 
@@ -109,6 +110,7 @@ def test_repeat_auch_bei_ungueltiger_antwort(monkeypatch, tmp_path):
 
 def test_git_sperrt_schreibende_befehle():
     import pytest
+
     import tools
     for cmd in ["commit -am x", "push", "checkout main",
                 "log --output=x.txt", "grep -Ovim x",
@@ -120,6 +122,7 @@ def test_git_sperrt_schreibende_befehle():
 
 def test_git_liest_repository(monkeypatch, tmp_path):
     import subprocess
+
     import tools
     ws = tmp_path / "workspace"
     ws.mkdir()

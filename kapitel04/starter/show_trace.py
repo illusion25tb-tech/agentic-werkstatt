@@ -1,9 +1,11 @@
 """Gibt trace.jsonl als lesbare Tabelle aus."""
 import json
 import sys
+from pathlib import Path
 
 pfad = sys.argv[1] if len(sys.argv) > 1 else "trace.jsonl"
-for line in open(pfad, encoding="utf-8"):
+text = Path(pfad).read_text(encoding="utf-8")
+for line in text.splitlines():
     r = json.loads(line)
     if "abort" in r:
         print(f"{r['step']:>3}  ABBRUCH    {r['abort']}")

@@ -42,7 +42,7 @@ def execute(d: Decision) -> str:
         return f"FEHLER: Unbekanntes Tool {d.tool!r}"
     try:
         return fn(**d.args)
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         return f"FEHLER: {type(e).__name__}: {e}"
 
 

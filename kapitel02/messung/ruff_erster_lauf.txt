@@ -1,0 +1,58 @@
+$ ruff check .
+PLW1510 `subprocess.run` without explicit `check` argument
+  --> check_werkbank.py:22:16
+   |
+20 | def check_ignored(path: str = ".env") -> str | None:
+21 |     try:
+22 |         proc = subprocess.run(
+   |                ^^^^^^^^^^^^^^
+23 |             ["git", "check-ignore", "-q", path],
+24 |             capture_output=True)
+   |
+help: Add explicit `check=False`
+   |
+23 |             ["git", "check-ignore", "-q", path],
+   -             capture_output=True)
+24 +             check=False, capture_output=True)
+25 |     except FileNotFoundError:
+   |
+note: This suggestion may be incorrect or produce invalid syntax. It requires manual review and cannot be applied automatically
+
+Found 1 error.
+[exit 1]
+$ ruff format --check .
+unformatted: File would be reformatted
+  --> check_werkbank.py:2:1
+   |
+1  | """Prüft, ob die Werkbank aus Kapitel 2 bereit ist."""
+2  +
+3  | import shutil
+--------------------------------------------------------------------------------
+24 |             ["git", "check-ignore", "-q", path],
+   -             capture_output=True)
+25 +             capture_output=True,
+26 +         )
+27 |     except FileNotFoundError:
+--------------------------------------------------------------------------------
+36 | def main() -> int:
+   -     errors = [check_python(), check_program("git"),
+   -               check_program("uv"), check_ignored()]
+37 +     errors = [
+38 +         check_python(),
+39 +         check_program("git"),
+40 +         check_program("uv"),
+41 +         check_ignored(),
+42 +     ]
+43 |     errors = [e for e in errors if e]
+   |
+
+unformatted: File would be reformatted
+  --> test_werkbank.py:20:1
+   |
+19 |         return subprocess.CompletedProcess(cmd, code)
+20 +
+21 |     return run
+   |
+
+2 files would be reformatted
+[exit 1]

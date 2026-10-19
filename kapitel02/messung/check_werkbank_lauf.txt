@@ -1,0 +1,8 @@
+$ python check_werkbank.py; echo $?
+FEHLT: uv nicht gefunden (PATH prüfen)
+1
+
+$ export PYTHONUTF8=1
+$ python check_werkbank.py; echo $?
+FEHLT: uv nicht gefunden (PATH prÃ¼fen)
+1

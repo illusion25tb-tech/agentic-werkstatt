@@ -5,7 +5,7 @@ from pathlib import Path
 
 from pydantic import BaseModel, ValidationError
 
-from llm import ask_model          # aus Kapitel 3
+from llm import ask_model  # aus Kapitel 3
 from tools import TOOLS
 
 MAX_STEPS = 12
@@ -38,7 +38,7 @@ def execute(d: Decision) -> str:
         return f"FEHLER: Unbekanntes Tool {d.tool!r}"
     try:
         return fn(**d.args)
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         return f"FEHLER: {type(e).__name__}: {e}"
 
 

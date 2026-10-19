@@ -1,0 +1,221 @@
+# Durchgang NL-102, 19.10.2026 22:28, MINGW64_NT-10.0-26300, Python 3.12.10, git version 2.53.0.windows.1, pytest 9.1.1, ruff 0.17.1
+# pytest/ruff aus der .venv des bestellservice (uv nicht installiert)
+
+$ pwd
+/c/Users/ToertjeB/AppData/Local/Temp/claude/C--Users-ToertjeB/bac0f431-fc46-44f9-8464-729b683331fd/scratchpad/kap02_werkbank
+[exit 0]
+
+$ ls; echo $?
+agentic-werkstatt
+0
+[exit 0]
+
+$ cd agentic-werkstatt/bestellservice
+[exit 0]
+
+$ ls; echo $?
+README.md
+bestellservice
+docs
+pyproject.toml
+tests
+0
+[exit 0]
+
+$ ls gibt-es-nicht; echo $?
+ls: cannot access 'gibt-es-nicht': No such file or directory
+2
+[exit 0]
+
+$ pytest
+........................................................................ [ 62%]
+............................................                             [100%]
+116 passed in 4.25s
+[exit 0]
+
+$ head -n 12 ../issues/NL-102.md
+# NL-102: Postleitzahl mit führender Null erscheint auf dem Versandlabel ohne Null (01067 wird zu 1067)
+
+- Gemeldet von: Lager und Versand, Schichtleitung
+- Datum: 24.09.2026
+- Bereich: Versandlabel
+- Priorität: nicht gesetzt
+
+Uns sind heute drei Pakete nach Sachsen aufgefallen, auf dem Label
+steht bei der PLZ nur 4 Ziffern. Beispiel Bestellung 10241: im Shop
+steht 01067 Dresden, auf dem Label "1067 Dresden". Der Fahrer hat
+gefragt, ob das so richtig ist. Bei Bielefeld (33602) ist alles normal.
+
+[exit 0]
+
+$ git grep -n "def postal_line"
+bestellservice/labels.py:23:def postal_line(postal_code: str, city: str) -> str:
+[exit 0]
+
+$ sed -n 23,26p bestellservice/labels.py
+def postal_line(postal_code: str, city: str) -> str:
+    """Zeile mit Postleitzahl und Ort, z. B. 33602 Bielefeld."""
+    # Leerzeichen aus dem Bestellformular entfernen.
+    return f"{int(postal_code)} {city}"
+[exit 0]
+
+$ python -c 'print(int("01067"))'
+1067
+[exit 0]
+
+$ git status
+On branch main
+nothing to commit, working tree clean
+[exit 0]
+
+$ git switch -c fix/nl-102-plz
+Switched to a new branch 'fix/nl-102-plz'
+[exit 0]
+
+$ git status --short
+?? tests/test_nl102.py
+[exit 0]
+
+$ pytest tests/test_nl102.py
+F.F                                                                      [100%]
+================================== FAILURES ===================================
+__________________________ test_leading_zero_is_kept __________________________
+
+    def test_leading_zero_is_kept():
+        line = labels.postal_line("01067", "Dresden")
+>       assert line == "01067 Dresden"
+E       AssertionError: assert '1067 Dresden' == '01067 Dresden'
+E         
+E         - 01067 Dresden
+E         ? -
+E         + 1067 Dresden
+
+tests\test_nl102.py:10: AssertionError
+___________________________ test_label_for_dresden ____________________________
+
+client = <starlette.testclient.TestClient object at 0x0000024298762390>
+
+    def test_label_for_dresden(client):
+        address = dict(ADDRESS, postal_code="01067", city="Dresden")
+        order = paid_order(client, [("AKS-18", 1)], address=address)
+        label = client.post(f"/orders/{order['id']}/label").json()
+>       assert "  01067 Dresden" in label["text"].splitlines()
+E       AssertionError: assert '  01067 Dresden' in ['ABSENDER', '  Nordlicht Werkzeughandel GmbH', '  Am Werkhof 12', '  33602 Bielefeld', 'EMPF�NGER', '  Erika Musterfrau', ...]
+E        +  where ['ABSENDER', '  Nordlicht Werkzeughandel GmbH', '  Am Werkhof 12', '  33602 Bielefeld', 'EMPF�NGER', '  Erika Musterfrau', ...] = <built-in method splitlines of str object at 0x000002429860B750>()
+E        +    where <built-in method splitlines of str object at 0x000002429860B750> = 'ABSENDER\n  Nordlicht Werkzeughandel GmbH\n  Am Werkhof 12\n  33602 Bielefeld\nEMPF�NGER\n  Erika Musterfrau\n  Muste...  1067 Dresden\nPRODUKT  PF-STD-S (Standard S)\nGEWICHT  1,60 kg\nSENDUNG  3400 0000 0001 6\nREFERENZ Bestellung 10230'.splitlines
+
+tests\test_nl102.py:22: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_nl102.py::test_leading_zero_is_kept - AssertionError: asser...
+FAILED tests/test_nl102.py::test_label_for_dresden - AssertionError: assert '...
+2 failed, 1 passed in 0.42s
+[exit 1]
+
+$ pytest tests/test_nl102.py > /dev/null; echo $?
+1
+[exit 0]
+
+$ git add tests/test_nl102.py
+[exit 0]
+
+$ git commit -m "NL-102: Test für PLZ mit führender Null"
+[fix/nl-102-plz 726f7d1] NL-102: Test für PLZ mit führender Null
+ 1 file changed, 22 insertions(+)
+ create mode 100644 bestellservice/tests/test_nl102.py
+[exit 0]
+
+$ pytest tests/test_nl102.py
+...                                                                      [100%]
+3 passed in 0.12s
+[exit 0]
+
+$ pytest
+........................................................................ [ 60%]
+...............................................                          [100%]
+119 passed in 4.06s
+[exit 0]
+
+$ pytest > /dev/null; echo $?
+0
+[exit 0]
+
+$ ruff check .
+All checks passed!
+[exit 0]
+
+$ ruff format --check .
+32 files already formatted
+[exit 0]
+
+$ git diff
+warning: in the working copy of 'bestellservice/bestellservice/labels.py', LF will be replaced by CRLF the next time Git touches it
+diff --git a/bestellservice/bestellservice/labels.py b/bestellservice/bestellservice/labels.py
+index 707b7d3..9159524 100644
+--- a/bestellservice/bestellservice/labels.py
++++ b/bestellservice/bestellservice/labels.py
+@@ -23,7 +23,7 @@ def _cut(text: str) -> str:
+ def postal_line(postal_code: str, city: str) -> str:
+     """Zeile mit Postleitzahl und Ort, z. B. 33602 Bielefeld."""
+     # Leerzeichen aus dem Bestellformular entfernen.
+-    return f"{int(postal_code)} {city}"
++    return f"{postal_code.strip()} {city}"
+ 
+ 
+ def address_lines(order: dict) -> list[str]:
+[exit 0]
+
+$ git add bestellservice/labels.py
+warning: in the working copy of 'bestellservice/bestellservice/labels.py', LF will be replaced by CRLF the next time Git touches it
+[exit 0]
+
+$ git commit -m "NL-102: PLZ auf dem Label als Text übernehmen"
+[fix/nl-102-plz 45c7789] NL-102: PLZ auf dem Label als Text übernehmen
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[exit 0]
+
+$ git log --oneline
+45c7789 NL-102: PLZ auf dem Label als Text übernehmen
+726f7d1 NL-102: Test für PLZ mit führender Null
+c48d43a Basisstand v1.0.0
+[exit 0]
+
+$ git diff --stat main
+ bestellservice/bestellservice/labels.py |  2 +-
+ bestellservice/tests/test_nl102.py      | 22 ++++++++++++++++++++++
+ 2 files changed, 23 insertions(+), 1 deletion(-)
+[exit 0]
+
+$ git revert --no-commit HEAD
+[exit 0]
+
+$ git status --short
+M  bestellservice/labels.py
+[exit 0]
+
+$ pytest tests/test_nl102.py | tail -n 3
+FAILED tests/test_nl102.py::test_leading_zero_is_kept - AssertionError: asser...
+FAILED tests/test_nl102.py::test_label_for_dresden - AssertionError: assert '...
+2 failed, 1 passed in 0.40s
+[exit 0]
+
+$ git revert --abort
+[exit 0]
+
+$ git status
+On branch fix/nl-102-plz
+nothing to commit, working tree clean
+[exit 0]
+
+$ echo "LLM_API_KEY=sk-test" > .env
+[exit 0]
+
+$ git status --short
+[exit 0]
+
+$ git check-ignore -v .env
+bestellservice/.gitignore:5:.env	.env
+[exit 0]
+
+$ touch notizen.txt; git check-ignore -v notizen.txt
+[exit 1]
+

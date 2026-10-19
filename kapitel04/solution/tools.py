@@ -70,7 +70,8 @@ def git(command: str) -> str:
            "--no-pager", *args]
     proc = subprocess.run(
         cmd, cwd=WORKDIR, capture_output=True, timeout=10,
-        text=True, encoding="utf-8", errors="replace")
+        text=True, encoding="utf-8", errors="replace",
+        check=False)  # Exit-Code werten wir aus
     out = proc.stdout if proc.returncode == 0 else proc.stderr
     return out[:4000] or (
         "Befehl lief ohne Fehler, fand aber nichts. "
