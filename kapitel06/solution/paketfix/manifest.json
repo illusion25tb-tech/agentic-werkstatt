@@ -1,0 +1,15 @@
+{
+  "korpus": "bestellservice/docs/paketfix",
+  "stand": "2026-10-20",
+  "dokumente": [
+    {"datei": "paketfix_api_v2.md", "typ": "api",
+     "version": "2.3", "gueltig_ab": "2026-09-01",
+     "personenbezug": "synthetisch"},
+    {"datei": "datenschutz_paketfix.md", "typ": "richtlinie",
+     "version": "1.4", "gueltig_ab": "2026-07-01",
+     "personenbezug": "synthetisch"},
+    {"datei": "aenderungsprotokoll.md", "typ": "changelog",
+     "version": "2.3", "gueltig_ab": "2026-09-01",
+     "personenbezug": "nein"}
+  ]
+}

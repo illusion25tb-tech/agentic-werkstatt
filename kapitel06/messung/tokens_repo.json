@@ -1,0 +1,216 @@
+{
+ "model": "llama3.2:3b",
+ "basis_prefix": 5,
+ "code": {
+  "dateien": 16,
+  "zeilen": 1850,
+  "zeichen": 48662,
+  "tokens": 12574
+ },
+ "tests": {
+  "dateien": 11,
+  "zeilen": 872,
+  "zeichen": 23690,
+  "tokens": 6532
+ },
+ "doku": {
+  "dateien": 4,
+  "zeilen": 465,
+  "zeichen": 17110,
+  "tokens": 5778
+ },
+ "details": {
+  "code": [
+   [
+    "bestellservice/__init__.py",
+    7,
+    200,
+    59
+   ],
+   [
+    "bestellservice/api.py",
+    190,
+    4908,
+    1119
+   ],
+   [
+    "bestellservice/cart.py",
+    196,
+    5600,
+    1414
+   ],
+   [
+    "bestellservice/catalog.py",
+    110,
+    2890,
+    706
+   ],
+   [
+    "bestellservice/config.py",
+    32,
+    828,
+    265
+   ],
+   [
+    "bestellservice/db.py",
+    327,
+    7041,
+    2065
+   ],
+   [
+    "bestellservice/errors.py",
+    27,
+    472,
+    124
+   ],
+   [
+    "bestellservice/inventory.py",
+    105,
+    2869,
+    738
+   ],
+   [
+    "bestellservice/invoice.py",
+    82,
+    2363,
+    594
+   ],
+   [
+    "bestellservice/labels.py",
+    131,
+    3808,
+    992
+   ],
+   [
+    "bestellservice/main.py",
+    45,
+    1064,
+    254
+   ],
+   [
+    "bestellservice/models.py",
+    44,
+    673,
+    188
+   ],
+   [
+    "bestellservice/orders.py",
+    408,
+    11956,
+    2822
+   ],
+   [
+    "bestellservice/shipping_costs.py",
+    42,
+    1044,
+    318
+   ],
+   [
+    "bestellservice/tariffs.py",
+    60,
+    1683,
+    555
+   ],
+   [
+    "bestellservice/tracking.py",
+    44,
+    1263,
+    361
+   ]
+  ],
+  "tests": [
+   [
+    "tests/conftest.py",
+    91,
+    2088,
+    544
+   ],
+   [
+    "tests/test_api.py",
+    35,
+    923,
+    240
+   ],
+   [
+    "tests/test_cart.py",
+    128,
+    3763,
+    1113
+   ],
+   [
+    "tests/test_catalog.py",
+    84,
+    2182,
+    592
+   ],
+   [
+    "tests/test_inventory.py",
+    71,
+    1910,
+    511
+   ],
+   [
+    "tests/test_invoice.py",
+    30,
+    972,
+    290
+   ],
+   [
+    "tests/test_labels.py",
+    100,
+    3131,
+    889
+   ],
+   [
+    "tests/test_orders.py",
+    220,
+    6213,
+    1701
+   ],
+   [
+    "tests/test_shipping_costs.py",
+    28,
+    579,
+    155
+   ],
+   [
+    "tests/test_tariffs.py",
+    42,
+    867,
+    246
+   ],
+   [
+    "tests/test_tracking.py",
+    43,
+    1062,
+    251
+   ]
+  ],
+  "doku": [
+   [
+    "docs/paketfix/aenderungsprotokoll.md",
+    30,
+    1150,
+    412
+   ],
+   [
+    "docs/paketfix/datenschutz_paketfix.md",
+    101,
+    3979,
+    1249
+   ],
+   [
+    "docs/paketfix/paketfix_api_v2.md",
+    250,
+    9112,
+    3214
+   ],
+   [
+    "README.md",
+    84,
+    2869,
+    903
+   ]
+  ]
+ }
+}

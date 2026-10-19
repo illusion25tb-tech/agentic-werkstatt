@@ -1,0 +1,31 @@
+{
+  "basis": "bestellservice 1.0.0 (Tag v1.0.0)",
+  "fragen": [
+    {"id": "A1",
+     "frage": "Wo wird das Versandgewicht für das Versandlabel berechnet?",
+     "relevant": ["bestellservice/labels.py",
+                  "bestellservice/orders.py"],
+     "belege": [["bestellservice/labels.py", 45, 50],
+                ["bestellservice/labels.py", 110, 110],
+                ["bestellservice/orders.py", 145, 150]]},
+    {"id": "A2",
+     "frage": "In welchem Modul werden die Versandkosten für den Kunden berechnet?",
+     "relevant": ["bestellservice/shipping_costs.py"],
+     "belege": [["bestellservice/shipping_costs.py", 15, 28]]},
+    {"id": "A3",
+     "frage": "Welche HTTP-Route erzeugt das Versandlabel, und welche Funktion ruft sie auf?",
+     "relevant": ["bestellservice/api.py",
+                  "bestellservice/orders.py"],
+     "belege": [["bestellservice/api.py", 181, 185],
+                ["bestellservice/orders.py", 296, 302]]},
+    {"id": "A4",
+     "frage": "Welche Statuswechsel sind für eine Bestellung erlaubt?",
+     "relevant": ["bestellservice/orders.py"],
+     "belege": [["bestellservice/orders.py", 41, 47]]},
+    {"id": "A5",
+     "frage": "Können Kunden eine Bestellung teilweise stornieren?",
+     "relevant": [],
+     "belege": [],
+     "erwartet": "not_found"}
+  ]
+}
