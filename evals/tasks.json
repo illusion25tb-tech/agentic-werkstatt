@@ -1,0 +1,103 @@
+{
+  "version": "1.0",
+  "stand": "2026-10-19",
+  "beschreibung": "Zurückgehaltenes Eval-Set NL-111 bis NL-120 für den bestellservice. Die versteckten Tests liegen außerhalb der Arbeitskopie und werden erst nach dem Run nach bestellservice/tests/ kopiert. Vorher werden alle Testdateien aus dem Basisstand wiederhergestellt.",
+  "pfade": "issue und hidden_tests relativ zur Repository-Wurzel, expected_files, context_files und pass_to_pass relativ zu workdir",
+  "workdir": "bestellservice",
+  "base": "bestellservice 1.0.0, Ausgangsstand ohne Kapitel-Lösungen (Tag v1.0.0 im Begleit-Repository)",
+  "pass_to_pass": ["tests/"],
+  "tasks": [
+    {
+      "id": "NL-111",
+      "issue": "issues/NL-111.md",
+      "base_commit": "v1.0.0",
+      "hidden_tests": ["evals/hidden/test_nl111.py"],
+      "expected_files": ["bestellservice/cart.py"],
+      "difficulty": 1,
+      "ambiguous": false
+    },
+    {
+      "id": "NL-112",
+      "issue": "issues/NL-112.md",
+      "base_commit": "v1.0.0",
+      "hidden_tests": ["evals/hidden/test_nl112.py"],
+      "expected_files": ["bestellservice/catalog.py"],
+      "difficulty": 1,
+      "ambiguous": false
+    },
+    {
+      "id": "NL-113",
+      "issue": "issues/NL-113.md",
+      "base_commit": "v1.0.0",
+      "hidden_tests": ["evals/hidden/test_nl113.py"],
+      "expected_files": ["bestellservice/invoice.py"],
+      "difficulty": 2,
+      "ambiguous": false
+    },
+    {
+      "id": "NL-114",
+      "issue": "issues/NL-114.md",
+      "base_commit": "v1.0.0",
+      "hidden_tests": ["evals/hidden/test_nl114.py"],
+      "expected_files": ["bestellservice/orders.py"],
+      "difficulty": 2,
+      "ambiguous": false
+    },
+    {
+      "id": "NL-115",
+      "issue": "issues/NL-115.md",
+      "base_commit": "v1.0.0",
+      "hidden_tests": ["evals/hidden/test_nl115.py"],
+      "expected_files": ["bestellservice/shipping_costs.py"],
+      "difficulty": 2,
+      "ambiguous": false
+    },
+    {
+      "id": "NL-116",
+      "issue": "issues/NL-116.md",
+      "base_commit": "v1.0.0",
+      "hidden_tests": ["evals/hidden/test_nl116.py"],
+      "expected_files": ["bestellservice/orders.py"],
+      "difficulty": 2,
+      "ambiguous": true
+    },
+    {
+      "id": "NL-117",
+      "issue": "issues/NL-117.md",
+      "base_commit": "v1.0.0",
+      "hidden_tests": ["evals/hidden/test_nl117.py"],
+      "expected_files": ["bestellservice/labels.py"],
+      "context_files": ["docs/paketfix/paketfix_api_v2.md"],
+      "difficulty": 2,
+      "ambiguous": false
+    },
+    {
+      "id": "NL-118",
+      "issue": "issues/NL-118.md",
+      "base_commit": "v1.0.0",
+      "hidden_tests": ["evals/hidden/test_nl118.py"],
+      "expected_files": ["bestellservice/catalog.py"],
+      "difficulty": 1,
+      "ambiguous": false
+    },
+    {
+      "id": "NL-119",
+      "issue": "issues/NL-119.md",
+      "base_commit": "v1.0.0",
+      "hidden_tests": ["evals/hidden/test_nl119.py"],
+      "expected_files": ["bestellservice/tracking.py"],
+      "context_files": ["docs/paketfix/paketfix_api_v2.md"],
+      "difficulty": 3,
+      "ambiguous": false
+    },
+    {
+      "id": "NL-120",
+      "issue": "issues/NL-120.md",
+      "base_commit": "v1.0.0",
+      "hidden_tests": ["evals/hidden/test_nl120.py"],
+      "expected_files": ["bestellservice/labels.py"],
+      "difficulty": 3,
+      "ambiguous": true
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+diff --git a/bestellservice/cart.py b/bestellservice/cart.py
+index dfc610f..ab86b19 100644
+--- a/bestellservice/cart.py
++++ b/bestellservice/cart.py
+@@ -3,6 +3,7 @@
+ import sqlite3
+ from collections.abc import Callable
+ from datetime import datetime
++from decimal import Decimal
+ 
+ from . import catalog
+ from .config import MAX_QUANTITY_PER_LINE, SUPPORTED_COUNTRIES
+@@ -131,10 +132,11 @@ def cart_lines(
+ 
+ def cart_subtotal(lines: list[dict]) -> float:
+     """Warenwert aller Positionen in EUR."""
+-    subtotal = 0.0
++    subtotal = Decimal("0")
+     for line in lines:
+-        subtotal += line["unit_price"] * line["quantity"]
+-    return subtotal
++        price = Decimal(str(line["unit_price"]))
++        subtotal += price * line["quantity"]
++    return float(subtotal)
+ 
+ 
+ def coupon_discount(coupon, subtotal: float) -> float:
+diff --git a/bestellservice/shipping_costs.py b/bestellservice/shipping_costs.py
+index bf2872b..d752491 100644
+--- a/bestellservice/shipping_costs.py
++++ b/bestellservice/shipping_costs.py
+@@ -23,7 +23,7 @@ def shipping_cost(
+     `subtotal` ist der Warenwert nach Rabatt.
+     """
+     rate = RATES.get(country.lower(), RATES["DE"])
+-    if country == "DE" and subtotal > FREE_SHIPPING_FROM:
++    if country == "DE" and subtotal >= FREE_SHIPPING_FROM:
+         return 0.0
+     return rate
+ 
+diff --git a/tests/test_nl101.py b/tests/test_nl101.py
+new file mode 100644
+index 0000000..5879bfb
+--- /dev/null
++++ b/tests/test_nl101.py
+@@ -0,0 +1,31 @@
++"""Regressionstest NL-101: versandkostenfrei ab 50,00 EUR."""
++
++from conftest import fill_cart
++
++from bestellservice.shipping_costs import shipping_cost
++
++# 3 x 13,70 + 7,80 + 1,10 = 50,00 EUR. Als float-Summe
++# ergibt das 49,99999999999999.
++EXACTLY_50 = [("SP-120", 3), ("HL-750", 1), ("ZB-01", 1)]
++
++
++def test_cart_of_exactly_50_ships_free(client):
++    cart_id = fill_cart(client, EXACTLY_50)
++    summary = client.get(f"/carts/{cart_id}").json()
++    assert summary["subtotal"] == 50.00
++    assert summary["shipping"] == 0.0
++    assert summary["total"] == 50.00
++
++
++def test_single_article_of_50_ships_free(client):
++    cart_id = fill_cart(client, [("WW-120", 1)])
++    summary = client.get(f"/carts/{cart_id}").json()
++    assert summary["shipping"] == 0.0
++
++
++def test_threshold_itself():
++    assert shipping_cost(50.0) == 0.0
++
++
++def test_one_cent_below_pays_shipping():
++    assert shipping_cost(49.99) == 4.95

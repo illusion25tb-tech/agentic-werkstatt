@@ -1,0 +1,44 @@
+diff --git a/bestellservice/tariffs.py b/bestellservice/tariffs.py
+index 7cd0c6e..64d8847 100644
+--- a/bestellservice/tariffs.py
++++ b/bestellservice/tariffs.py
+@@ -47,8 +47,8 @@ def weight_class(weight_kg: float) -> str:
+     for code in WEIGHT_CLASSES:
+         if weight_kg <= TARIFFS[code].max_kg:
+             return code
+-    # Schwerer geht es nur noch in die größte Klasse.
+-    return "XL"
++    # Über der größten Standardklasse gilt Sperrgut.
++    return "SPERRGUT"
+ 
+ 
+ def tariff_for(weight_kg: float) -> Tariff:
+diff --git a/tests/test_nl107.py b/tests/test_nl107.py
+new file mode 100644
+index 0000000..8d17692
+--- /dev/null
++++ b/tests/test_nl107.py
+@@ -0,0 +1,23 @@
++"""Regressionstest NL-107: Sperrguttarif über 31,5 kg."""
++
++import pytest
++from conftest import paid_order
++
++from bestellservice import tariffs
++
++
++def test_limit_itself_is_standard():
++    assert tariffs.tariff_for(31.5).code == "PF-STD-XL"
++
++
++@pytest.mark.parametrize("weight", [31.51, 33.5, 38.0, 60.0])
++def test_above_limit_is_bulky(weight):
++    assert tariffs.tariff_for(weight).code == "PF-SPG"
++
++
++def test_label_for_workbench(client):
++    order = paid_order(client, [("WB-200", 1)])
++    label = client.post(f"/orders/{order['id']}/label").json()
++    assert label["weight_kg"] == 38.0
++    assert label["tariff_code"] == "PF-SPG"
++    assert "PF-SPG (Sperrgut)" in label["text"]
