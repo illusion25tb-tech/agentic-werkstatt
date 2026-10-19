@@ -1,0 +1,11 @@
+[project]
+name = "kapitel05-starter"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = ["mcp==2.3.0", "pydantic>=2", "httpx", "jsonschema"]
+
+[dependency-groups]
+dev = ["pytest>=8", "anyio"]
+
+[tool.ruff]
+line-length = 64

@@ -1,0 +1,1 @@
+{"ts": 1792444833.645, "step": 1, "answer": "{\"name\":\"search\",\"parameters{\"}}", "usage": {"prompt_tokens": 303, "prompt_tokens_details": {"cached_tokens": 0}, "completion_tokens": 9, "total_tokens": 312}}
