@@ -5,7 +5,7 @@ from pathlib import Path
 
 from pydantic import BaseModel, ValidationError
 
-from llm import ask_model          # aus Kapitel 3
+from llm import LAST_USAGE, ask_model  # aus Kapitel 3
 from tools import TOOLS
 
 MAX_STEPS = 12
@@ -71,7 +71,8 @@ def run(task: str) -> str:
         if streak > MAX_REPEATS:
             log(step, abort="repeat", key=key[:200])
             return "ABBRUCH: Wiederholung ohne Fortschritt"
-        log(step, raw=raw, observation=obs[:500])
+        log(step, raw=raw, observation=obs[:500],
+            usage=dict(LAST_USAGE))
         messages.append(                   # beobachten
             {"role": "user", "content": f"OBSERVATION: {obs}"})
     log(MAX_STEPS, abort="step_budget")

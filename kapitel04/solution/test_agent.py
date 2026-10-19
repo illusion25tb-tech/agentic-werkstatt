@@ -23,13 +23,15 @@ def test_happy_path(monkeypatch, tmp_path):
 
 
 def test_step_budget(monkeypatch, tmp_path):
+    # wechselnde Aktionen: keine Wiederholung, nur das Budget greift
     monkeypatch.setattr(agent, "TRACE", tmp_path / "t.jsonl")
-    monkeypatch.setattr(agent, "ask_model",
-                        lambda m: j("read_file", path="4711.json"))
-    assert agent.run("x").startswith("ABBRUCH")
+    n = iter(range(100))
+    monkeypatch.setattr(agent, "ask_model", lambda m: j(
+        "calculator", expression=str(next(n))))
+    assert agent.run("x") == "ABBRUCH: Step-Budget erschöpft"
 
 
-def test_pfad_ausserhalb(monkeypatch):
+def test_pfad_ausserhalb():
     d = agent.Decision(thought="", tool="read_file",
                        args={"path": "../agent.py"})
     assert "PermissionError" in agent.execute(d)
@@ -43,14 +45,13 @@ def test_kein_json(monkeypatch, tmp_path):
 
 
 def test_repeat_abbruch(monkeypatch, tmp_path):
-    import agent_hardened as ah
-    monkeypatch.setattr(ah, "TRACE", tmp_path / "t.jsonl")
+    monkeypatch.setattr(agent, "TRACE", tmp_path / "t.jsonl")
     calls = []
     def m(messages):
         calls.append(1)
         return j("read_file", path="4711.json")
-    monkeypatch.setattr(ah, "ask_model", m)
-    assert ah.run("x") == "ABBRUCH: Wiederholung ohne Fortschritt"
+    monkeypatch.setattr(agent, "ask_model", m)
+    assert agent.run("x") == "ABBRUCH: Wiederholung ohne Fortschritt"
     assert len(calls) == 3
 
 
@@ -67,26 +68,24 @@ def test_absolute_pfade():
 
 
 def test_repeat_nur_direkt_hintereinander(monkeypatch, tmp_path):
-    import agent_hardened as ah
-    monkeypatch.setattr(ah, "TRACE", tmp_path / "t.jsonl")
+    monkeypatch.setattr(agent, "TRACE", tmp_path / "t.jsonl")
     calc = j("calculator")             # fehlendes Argument
-    monkeypatch.setattr(ah, "ask_model", scripted(
+    monkeypatch.setattr(agent, "ask_model", scripted(
         calc, calc, j("list_files", path="."), calc,
         j("finish", answer="ok")))
-    assert ah.run("x") == "ok"
+    assert agent.run("x") == "ok"
 
 
 def test_fehlendes_feld_wird_benannt(monkeypatch, tmp_path):
-    import agent_hardened as ah
-    monkeypatch.setattr(ah, "TRACE", tmp_path / "t.jsonl")
+    monkeypatch.setattr(agent, "TRACE", tmp_path / "t.jsonl")
     seen = []
     def m(messages):
         seen.append(messages[-1]["content"])
         if len(seen) == 1:
             return '{"tool": "finish", "args": {}}'
         return j("finish", answer="ok")
-    monkeypatch.setattr(ah, "ask_model", m)
-    assert ah.run("x") == "ok"
+    monkeypatch.setattr(agent, "ask_model", m)
+    assert agent.run("x") == "ok"
     assert "'thought'" in seen[1]
 
 
@@ -98,12 +97,11 @@ def test_list_files_falsches_verzeichnis():
 
 
 def test_repeat_auch_bei_ungueltiger_antwort(monkeypatch, tmp_path):
-    import agent_hardened as ah
-    monkeypatch.setattr(ah, "TRACE", tmp_path / "t.jsonl")
+    monkeypatch.setattr(agent, "TRACE", tmp_path / "t.jsonl")
     calls = []
     def m(messages):
         calls.append(1)
         return '{"tool": "finish", "args": {"answer": "x"}}'
-    monkeypatch.setattr(ah, "ask_model", m)
-    assert ah.run("x").startswith("ABBRUCH: Wiederholung")
+    monkeypatch.setattr(agent, "ask_model", m)
+    assert agent.run("x").startswith("ABBRUCH: Wiederholung")
     assert len(calls) == 3
