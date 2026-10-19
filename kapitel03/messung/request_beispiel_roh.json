@@ -1,0 +1,43 @@
+{
+ "request": {
+  "model": "gemma3:4b",
+  "messages": [
+   {
+    "role": "system",
+    "content": "Antworte nur mit JSON."
+   },
+   {
+    "role": "user",
+    "content": "Ticket: PLZ 01067 steht auf dem Label als 1067. Feld kategorie: bug oder feature?"
+   }
+  ],
+  "response_format": {
+   "type": "json_object"
+  }
+ },
+ "response": {
+  "id": "chatcmpl-508",
+  "object": "chat.completion",
+  "created": 1792443096,
+  "model": "gemma3:4b",
+  "system_fingerprint": "fp_ollama",
+  "choices": [
+   {
+    "index": 0,
+    "message": {
+     "role": "assistant",
+     "content": "{\"response\": \"Bug\"}"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "prompt_tokens": 51,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens": 7,
+   "total_tokens": 58
+  }
+ }
+}

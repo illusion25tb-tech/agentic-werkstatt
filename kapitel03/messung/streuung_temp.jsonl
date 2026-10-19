@@ -1,0 +1,6 @@
+{"model": "gemma3:4b", "temperature": "0", "runs": 5, "counts": {"mittel": 5}, "frage": "Welche Priorität hat dieses Ticket? Antworte nur mit einem Wort: niedrig, mittel oder hoch.", "ts": "2026-10-19 23:10"}
+{"model": "llama3.2:3b", "temperature": "0", "runs": 5, "counts": {"niedrig": 5}, "frage": "Welche Priorität hat dieses Ticket? Antworte nur mit einem Wort: niedrig, mittel oder hoch.", "ts": "2026-10-19 23:13"}
+{"model": "phi4-mini", "temperature": "0", "runs": 5, "counts": {"mittel": 5}, "frage": "Welche Priorität hat dieses Ticket? Antworte nur mit einem Wort: niedrig, mittel oder hoch.", "ts": "2026-10-19 23:15"}
+{"model": "gemma3:4b", "temperature": "1.0", "runs": 5, "counts": {"mittel": 5}, "frage": "Welche Priorität hat dieses Ticket? Antworte nur mit einem Wort: niedrig, mittel oder hoch.", "ts": "2026-10-19 23:18"}
+{"model": "llama3.2:3b", "temperature": "1.0", "runs": 5, "counts": {"hoch": 3, "niedrig": 2}, "frage": "Welche Priorität hat dieses Ticket? Antworte nur mit einem Wort: niedrig, mittel oder hoch.", "ts": "2026-10-19 23:18"}
+{"model": "phi4-mini", "temperature": "1.0", "runs": 5, "counts": {"hoch": 3, "mittel": 1, "Hoch": 1}, "frage": "Welche Priorität hat dieses Ticket? Antworte nur mit einem Wort: niedrig, mittel oder hoch.", "ts": "2026-10-19 23:31"}

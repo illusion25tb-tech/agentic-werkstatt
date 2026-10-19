@@ -1,0 +1,15 @@
+POST http://127.0.0.1:11434/v1/chat/completions
+{"model": "gemma3:4b",
+ "messages": [
+  {"role": "system", "content": "Antworte nur mit JSON."},
+  {"role": "user", "content": "Ticket: PLZ 01067 steht auf
+   dem Label als 1067. Feld kategorie: bug oder feature?"}],
+ "response_format": {"type": "json_object"}}
+
+{"id": "chatcmpl-508", "object": "chat.completion",
+ "model": "gemma3:4b",
+ "choices": [{"index": 0, "finish_reason": "stop",
+   "message": {"role": "assistant",
+               "content": "{\"response\": \"Bug\"}"}}],
+ "usage": {"prompt_tokens": 51, "completion_tokens": 7,
+           "total_tokens": 58}}

@@ -1,0 +1,12 @@
+{'model': 'gemma3:4b', 'text': 'satz', 'woerter_de': 12, 'woerter_en': 14, 'zeichen_de': 95, 'zeichen_en': 94, 'tokens_de': 20, 'tokens_en': 16, 'faktor': 1.25, 'overhead': 23, 'ts': '2026-10-19 22:54'}
+{'model': 'gemma3:4b', 'text': 'absatz', 'woerter_de': 46, 'woerter_en': 45, 'zeichen_de': 267, 'zeichen_en': 240, 'tokens_de': 65, 'tokens_en': 52, 'faktor': 1.25, 'overhead': 23, 'ts': '2026-10-19 22:56'}
+{'model': 'gemma3:4b', 'text': 'komposita', 'woerter_de': 4, 'woerter_en': 12, 'zeichen_de': 85, 'zeichen_en': 86, 'tokens_de': 23, 'tokens_en': 15, 'faktor': 1.53, 'overhead': 23, 'ts': '2026-10-19 22:57'}
+{'model': 'gemma3:4b', 'text': 'cart.py', 'zeilen': 196, 'zeichen': 5600, 'tokens': 1700, 'ts': '2026-10-19 22:58'}
+{'model': 'llama3.2:3b', 'text': 'satz', 'woerter_de': 12, 'woerter_en': 14, 'zeichen_de': 95, 'zeichen_en': 94, 'tokens_de': 24, 'tokens_en': 16, 'faktor': 1.5, 'overhead': 32, 'ts': '2026-10-19 23:00'}
+{'model': 'llama3.2:3b', 'text': 'absatz', 'woerter_de': 46, 'woerter_en': 45, 'zeichen_de': 267, 'zeichen_en': 240, 'tokens_de': 72, 'tokens_en': 52, 'faktor': 1.38, 'overhead': 32, 'ts': '2026-10-19 23:04'}
+{'model': 'llama3.2:3b', 'text': 'komposita', 'woerter_de': 4, 'woerter_en': 12, 'zeichen_de': 85, 'zeichen_en': 86, 'tokens_de': 29, 'tokens_en': 15, 'faktor': 1.93, 'overhead': 32, 'ts': '2026-10-19 23:05'}
+{'model': 'llama3.2:3b', 'text': 'cart.py', 'zeilen': 196, 'zeichen': 5600, 'tokens': 1414, 'ts': '2026-10-19 23:06'}
+{'model': 'phi4-mini', 'text': 'satz', 'woerter_de': 12, 'woerter_en': 14, 'zeichen_de': 95, 'zeichen_en': 94, 'tokens_de': 18, 'tokens_en': 16, 'faktor': 1.12, 'overhead': 11, 'ts': '2026-10-19 23:06'}
+{'model': 'phi4-mini', 'text': 'absatz', 'woerter_de': 46, 'woerter_en': 45, 'zeichen_de': 267, 'zeichen_en': 240, 'tokens_de': 61, 'tokens_en': 52, 'faktor': 1.17, 'overhead': 11, 'ts': '2026-10-19 23:07'}
+{'model': 'phi4-mini', 'text': 'komposita', 'woerter_de': 4, 'woerter_en': 12, 'zeichen_de': 85, 'zeichen_en': 86, 'tokens_de': 25, 'tokens_en': 15, 'faktor': 1.67, 'overhead': 11, 'ts': '2026-10-19 23:07'}
+{'model': 'phi4-mini', 'text': 'cart.py', 'zeilen': 196, 'zeichen': 5600, 'tokens': 1389, 'ts': '2026-10-19 23:07'}

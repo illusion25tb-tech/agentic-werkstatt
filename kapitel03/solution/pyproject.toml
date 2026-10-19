@@ -1,0 +1,11 @@
+[project]
+name = "kapitel03-solution"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = ["pydantic>=2"]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.ruff]
+line-length = 64

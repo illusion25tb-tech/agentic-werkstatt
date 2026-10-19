@@ -1,0 +1,102 @@
+llama3.2:3b 1 NL-101 False None 1
+llama3.2:3b 1 NL-101 True frage 1
+llama3.2:3b 1 NL-102 False None 1
+llama3.2:3b 1 NL-102 True bug 2
+llama3.2:3b 1 NL-103 False None 1
+llama3.2:3b 1 NL-103 False None 2
+llama3.2:3b 1 NL-104 False None 1
+llama3.2:3b 1 NL-104 True frage 1
+llama3.2:3b 1 NL-105 False None 1
+llama3.2:3b 1 NL-105 False None 2
+llama3.2:3b 2 NL-101 False None 1
+llama3.2:3b 2 NL-101 False None 2
+llama3.2:3b 2 NL-102 False None 1
+llama3.2:3b 2 NL-102 False None 2
+Traceback (most recent call last):
+  File "C:\Users\ToertjeB\CLAUDE\Bücher\#36 B_Durchstarten mit Agentic Coding\code\kapitel03\messung\klassifizierer.py", line 38, in <module>
+    raw = llm.ask_model([{"role": "system", "content": BREAK_SYSTEM},
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ToertjeB\CLAUDE\Bücher\#36 B_Durchstarten mit Agentic Coding\code\kapitel03\solution\llm.py", line 27, in ask_model
+    with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ToertjeB\AppData\Local\Programs\Python\Python312\Lib\urllib\request.py", line 215, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ToertjeB\AppData\Local\Programs\Python\Python312\Lib\urllib\request.py", line 515, in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ToertjeB\AppData\Local\Programs\Python\Python312\Lib\urllib\request.py", line 532, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ToertjeB\AppData\Local\Programs\Python\Python312\Lib\urllib\request.py", line 492, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "C:\Users\ToertjeB\AppData\Local\Programs\Python\Python312\Lib\urllib\request.py", line 1373, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ToertjeB\AppData\Local\Programs\Python\Python312\Lib\urllib\request.py", line 1348, in do_open
+    r = h.getresponse()
+        ^^^^^^^^^^^^^^^
+  File "C:\Users\ToertjeB\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1430, in getresponse
+    response.begin()
+  File "C:\Users\ToertjeB\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ToertjeB\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 292, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ToertjeB\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 720, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: timed out
+Traceback (most recent call last):
+  File "C:\Users\ToertjeB\CLAUDE\Bücher\#36 B_Durchstarten mit Agentic Coding\code\kapitel03\messung\klassifizierer.py", line 71, in <module>
+    print(model, run, p.stem, rec["valid"], rec.get("kategorie"), rec["calls"], flush=True)
+                              ~~~^^^^^^^^^
+KeyError: 'valid'
+llama3.2:3b 2 NL-103 False None 2
+llama3.2:3b 2 NL-104 False None 1
+llama3.2:3b 2 NL-103 False None 1
+llama3.2:3b 2 NL-104 True bug 2
+llama3.2:3b 2 NL-105 False None 1
+llama3.2:3b 2 NL-105 False None 2
+gemma3:4b 1 NL-101 False None 1
+gemma3:4b 1 NL-101 True bug 1
+gemma3:4b 1 NL-102 False None 1
+gemma3:4b 1 NL-102 True sicherheit 1
+gemma3:4b 1 NL-103 False None 1
+gemma3:4b 1 NL-103 True bug 1
+gemma3:4b 1 NL-104 False None 1
+gemma3:4b 1 NL-104 True frage 1
+gemma3:4b 1 NL-105 False None 1
+gemma3:4b 1 NL-105 True feature 1
+gemma3:4b 2 NL-101 False None 1
+gemma3:4b 2 NL-101 True bug 1
+gemma3:4b 2 NL-102 False None 1
+gemma3:4b 2 NL-102 True sicherheit 1
+gemma3:4b 2 NL-103 False None 1
+gemma3:4b 2 NL-103 True bug 1
+gemma3:4b 2 NL-104 False None 1
+gemma3:4b 2 NL-104 True bug 1
+gemma3:4b 2 NL-105 False None 1
+gemma3:4b 2 NL-105 True feature 2
+phi4-mini 1 NL-101 False None 1
+phi4-mini 1 NL-101 False None 2
+phi4-mini 1 NL-102 False None 1
+phi4-mini 1 NL-102 False None 2
+phi4-mini 1 NL-103 False None 1
+phi4-mini 1 NL-103 True bug 1
+phi4-mini 1 NL-104 False None 1
+phi4-mini 1 NL-104 False None 2
+phi4-mini 1 NL-105 False None 1
+phi4-mini 1 NL-105 False None 2
+phi4-mini 2 NL-101 False None 1
+phi4-mini 2 NL-101 False None 2
+phi4-mini 2 NL-102 False None 1
+phi4-mini 2 NL-102 False None 2
+phi4-mini 2 NL-103 False None 1
+phi4-mini 2 NL-103 True bug 2
+phi4-mini 2 NL-104 False None 1
+phi4-mini 2 NL-104 True bug 1
+phi4-mini 2 NL-105 False None 1
+phi4-mini 2 NL-105 False None 2
