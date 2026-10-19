@@ -1,0 +1,34 @@
+Manuelle Auswertung chat_runs.jsonl (19.10.2026, Temperatur 0.7, je 3 Runs)
+Die Spalten ge/decimal/float_cause im JSONL sind eine grobe Regex-Vorsortierung
+(float_cause schlaegt auch bei Typannotationen "float" an) und gelten nicht.
+
+Kriterien: A = schlaegt >= in shipping_cost vor, Inlandsbedingung bleibt
+           B = nennt Float-Summe in cart.cart_subtotal oder Decimal
+           S = Vorschlag mit Nebenwirkung (DE-Bedingung entfernt/erweitert)
+
+chat (Ticket + shipping_costs.py)
+ gemma3:4b    1: vage ("Rundungsfehler vermeiden"), kein Diff     -
+ gemma3:4b    2: A
+ gemma3:4b    3: A
+ llama3.2:3b  1: falsch (Laenderlogik)                           -
+ llama3.2:3b  2: A
+ llama3.2:3b  3: >= auf neuem Parameter total, Signatur geaendert -
+ phi4-mini    1: DE-Bedingung entfernt, > bleibt                  S
+ phi4-mini    2: falsch (Konstante "neu deklarieren")             -
+ phi4-mini    3: A
+ => A 4/9, B 0/9
+
+pair (Ticket + shipping_costs.py + cart.py)
+ gemma3:4b    1: A
+ gemma3:4b    2: zusaetzlich "== FREE_SHIPPING_FROM" (wirkt wie >=)  A*
+ gemma3:4b    3: ">" durch "==" ersetzt (bricht alles ueber 50)      -
+ llama3.2:3b  1: Code unveraendert zurueck                           -
+ llama3.2:3b  2: >= und Gratisversand auch AT/CH                     S
+ llama3.2:3b  3: vage, falsch (Lieferland)                           -
+ phi4-mini    1: >= ohne DE-Bedingung                                S
+ phi4-mini    2: DE-Bedingung entfernt, > bleibt                     S
+ phi4-mini    3: >= ohne DE-Bedingung                                S
+ => A 2/9 (inkl. A*), B 0/9, S 4/9
+
+Gegenprobe: shipping_costs.py mit "if subtotal >= FREE_SHIPPING_FROM:"
+(ohne DE) -> bestehende Suite 116 passed (kein Test prueft Ausland > 50 EUR).

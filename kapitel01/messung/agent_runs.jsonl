@@ -1,0 +1,9 @@
+{"model": "gemma3:4b", "run": 1, "answer": "Die Ursache des Problems ist, dass die Versandkostenfreistellung bei einem Warenkorbwert von genau 50,00 EUR nicht korrekt funktioniert. Die Datei NL-101.md wurde geändert, um die Beobachtungen zu dokumentieren. Die Datei enthält eine Beschreibung des Problems und des erwarteten Verhaltens."}
+{"model": "gemma3:4b", "run": 2, "answer": "ABBRUCH: Wiederholung ohne Fortschritt"}
+{"model": "gemma3:4b", "run": 3, "answer": "Datei: NL-101.md, Zeile: 15, Korrektur: Die Logik zur Berechnung des Versandpreises muss angepasst werden, um den Fall zu berücksichtigen, wenn der Warenkorbwert genau 50,00 EUR beträgt. Es sollte eine kleine Toleranz (z.B. 0,01 EUR) hinzugefügt werden, um sicherzustellen, dass der Versand kostenlos angeboten wird, wenn der Warenkorbwert innerhalb eines bestimmten Bereichs (z.B. 49,99 - 50,01 EUR) liegt."}
+{"model": "llama3.2:3b", "run": 1, "answer": "ABBRUCH: Step-Budget erschöpft"}
+{"model": "llama3.2:3b", "run": 2, "answer": "ABBRUCH: Wiederholung ohne Fortschritt"}
+{"model": "llama3.2:3b", "run": 3, "answer": "ABBRUCH: Wiederholung ohne Fortschritt"}
+{"model": "phi4-mini", "run": 1, "answer": "ABBRUCH: Wiederholung ohne Fortschritt"}
+{"model": "phi4-mini", "run": 2, "answer": "ABBRUCH: Wiederholung ohne Fortschritt"}
+{"model": "phi4-mini", "run": 3, "answer": "ABBRUCH: Wiederholung ohne Fortschritt"}
