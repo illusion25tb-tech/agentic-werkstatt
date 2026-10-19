@@ -18,6 +18,8 @@ Verfügbare Tools:
 - calculator(expression): rechnet mit + - * / ( )
 - read_file(path): liest eine Datei, z. B. "bestellungen/1.json"
 - list_files(path): listet Dateien, "." für alle
+- git(command): liest das Repository mit status, log, show,
+  diff, ls-files oder grep, z. B. "show HEAD" oder "log -3"
 - finish(answer): beendet die Aufgabe mit der Antwort
 """
 

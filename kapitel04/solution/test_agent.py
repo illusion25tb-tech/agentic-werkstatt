@@ -105,3 +105,31 @@ def test_repeat_auch_bei_ungueltiger_antwort(monkeypatch, tmp_path):
     monkeypatch.setattr(agent, "ask_model", m)
     assert agent.run("x").startswith("ABBRUCH: Wiederholung")
     assert len(calls) == 3
+
+
+def test_git_sperrt_schreibende_befehle():
+    import pytest
+    import tools
+    for cmd in ["commit -am x", "push", "checkout main",
+                "log --output=x.txt", "grep -Ovim x",
+                "-c core.pager=evil log", "grep -nOevil x",
+                "diff --no-index a b", "show --ext-diff"]:
+        with pytest.raises(PermissionError):
+            tools.git(cmd)
+
+
+def test_git_liest_repository(monkeypatch, tmp_path):
+    import subprocess
+    import tools
+    ws = tmp_path / "workspace"
+    ws.mkdir()
+    (ws / "a.txt").write_text("hallo\n", encoding="utf-8")
+    for a in (["init", "-q"], ["add", "."],
+              ["commit", "-q", "-m", "Erster Commit"]):
+        subprocess.run(["git", "-c", "user.name=t",
+                        "-c", "user.email=t@t", *a],
+                       cwd=ws, check=True)
+    monkeypatch.setattr(tools, "WORKDIR", ws)
+    assert "Erster Commit" in tools.git("log --oneline -1")
+    assert "a.txt" in tools.git("grep -l hallo")
+    assert "Erster" in tools.git("log --format=%s -1")
