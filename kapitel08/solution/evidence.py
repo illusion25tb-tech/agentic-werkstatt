@@ -66,8 +66,9 @@ def verify(raw: str, root: Path) -> list[str]:
               if (grund := check_claim(c, root))]
     for muster in a.not_found:      # Harness sucht selbst
         if VERWEIS.search(muster) or len(muster.strip()) < 3:
-            fehler.append(f"not_found {muster!r}: kein Suchbegriff."
-                          " Nennen Sie, wonach Sie gesucht haben.")
+            fehler.append(f"not_found {muster!r}: kein "
+                          "Suchbegriff. Nennen Sie, wonach "
+                          "Sie gesucht haben.")
             continue
         try:
             leer = search(muster, ".", root).startswith("Keine")
