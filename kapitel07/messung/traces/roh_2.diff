@@ -1,0 +1,96 @@
+--- bestellservice/orders.py
++++ bestellservice/orders.py
+
+@@ -13,6 +13,7 @@
+ 
+ STATUSES = (
+     STATUS_NEW,
+     STATUS_PAID,
+     STATUS_PAYMENT_FAILED,
+     STATUS_SHIPPED,
+ )
+ 
+@@ -42,6 +42,7 @@
+ 
+ TRANSITIONS = {
+     STATUS_NEW: {STATUS_PAID, STATUS_PAYMENT_FAILED},
+     STATUS_PAID: {STATUS_SHIPPED},
+     STATUS_PAYMENT_FAILED: set(),
+     STATUS_SHIPPED: set(),
+ }
+ 
++# Warenkorb bestellt
++def create_order(
++    conn: sqlite3.Connection,
++    cart_id: int,
++    customer: dict,
++    address: dict,
++    clock: Callable[[], datetime] = datetime.now,
++):
++    """Legt aus einem Warenkorb eine Bestellung an.
++    
++    Reserviert den Bestand. Ein Warenkorb kann nur einmal
++    bestellt werden.
++    """
++    customer = validate_customer(customer)
++    address = validate_address(address)
++    used = conn.execute(
++        "SELECT id FROM orders WHERE cart_id = ?", (cart_id,)
++    ).fetchone()
++    if used is not None:
++        raise InvalidState(
++            f"Warenkorb {cart_id} wurde schon bestellt "
++            f"(Bestellung {used['id']})"
++        )
++    summary = cart.cart_summary(
++        conn, cart_id, address["country"]
++    )
++    if not summary["lines"]:
++        raise ValidationFailed("Warenkorb ist leer")
++    lines = [
++        (li["sku"], li["quantity"]) for li in summary["lines"]
++    ]
++    inventory.reserve(conn, lines)
++    cur = conn.execute(
++        "INSERT INTO orders (cart_id, customer_name, "
++        "customer_mail, customer_type, ship_name, ship_street, "
++        "ship_postal, ship_city, ship_country, status, "
++        "subtotal, discount, shipping, total, created_at) "
++        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
++        (
++            cart_id,
++            customer["name"],
++            customer["email"],
++            customer["type"],
++            address["name"],
++            address["street"],
++            address["postal_code"],
++            address["city"],
++            address["country"],
++            STATUS_NEW,
++            summary["subtotal"],
++            summary["discount"],
++            summary["shipping"],
++            summary["total"],
++            clock().strftime(DATE_FORMAT),
++        ),
++    )
++    order_id = cur.lastrowid
++    conn.executemany(
++        "INSERT INTO order_items (order_id, sku, name, "
++        "quantity, unit_price, weight_kg) "
++        "VALUES (?, ?, ?, ?, ?, ?)",
++        [
++            (
++                order_id,
++                li["sku"],
++                li["name"],
++                li["quantity"],
++                li["unit_price"],
++                li["weight_kg"],
++            )
++            for li in summary["lines"]
++        ],
++    )
++    conn.commit()
++    return get_order(conn, order_id)

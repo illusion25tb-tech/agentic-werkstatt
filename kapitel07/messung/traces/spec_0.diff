@@ -1,0 +1,5 @@
+--- bestellservice/api.py
++++ bestellservice/api.py
+@@ -36,6 +36,7 @@ def _clock(request: Request):
++    clock = request.app.state.clock
+     return clock

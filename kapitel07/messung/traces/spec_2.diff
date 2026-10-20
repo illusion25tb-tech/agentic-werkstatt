@@ -1,0 +1,54 @@
+```diff
+--- bestellservice/orders.py
++++ bestellservice/orders.py
+@@ -158,6 +158,24 @@
+     order["items"] = _items(conn, order_id)
+     order["weight_kg"] = order_weight(order["items"])
+     order["bulky"] = tariffs.is_bulky(order["weight_kg"])
++    return order
++
++
++def set_status(
++    conn: sqlite3.Connection,
++    order_id: int,
++    new_status: str,
++    clock: Callable[[], datetime] = datetime.now,
++):
++    """Wechselt den Status und bucht den Bestand passend."""
++    order = get_order(conn, order_id)
++    old_status = order["status"]
++    if new_status not in STATUSES:
++        raise ValidationFailed(
++            f"Status {new_status!r} unbekannt"
++        )
++    if new_status not in TRANSITIONS[old_status]:
++        raise InvalidState(
++            f"Wechsel von {old_status} nach {new_status} "
++            "ist nicht erlaubt"
++        )
++    lines = _lines(order["items"])
++    if new_status == "zahlung_fehlgeschlagen":
++        inventory.release(conn, lines)
++    if new_status == STATUS_SHIPPED:
++        if order["tracking_number"] is None:
++            raise InvalidState(
++                "Versand ohne Label nicht möglich"
++            )
++        inventory.ship(conn, lines)
++    conn.execute(
++        "UPDATE orders SET status = ? WHERE id = ?",
++        (new_status, order_id),
++    )
++    conn.execute(
++        "INSERT INTO status_log (order_id, old_status, "
++        "new_status, changed_at) VALUES (?, ?, ?, ?)",
++        (
++            order_id,
++            old_status,
++            new_status,
++            clock().isoformat(timespec="seconds"),
++        ),
++    )
++    conn.commit()
++    return get_order(conn, order_id)
+```

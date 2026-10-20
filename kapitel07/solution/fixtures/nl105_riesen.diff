@@ -1,0 +1,312 @@
+diff --git a/bestellservice/api.py b/bestellservice/api.py
+index 0494e58..83a84a9 100644
+--- a/bestellservice/api.py
++++ b/bestellservice/api.py
+@@ -5,6 +5,7 @@ from fastapi.responses import PlainTextResponse
+ 
+ from . import cart, catalog, inventory, invoice, labels, orders
+ from .models import (
++    CancelIn,
+     CouponIn,
+     ItemIn,
+     OrderIn,
+@@ -157,6 +158,30 @@ def post_status(
+     )
+ 
+ 
++@router.post("/orders/{order_id}/cancel")
++def post_cancel(
++    request: Request, order_id: int, body: CancelIn
++) -> dict:
++    return orders.cancel_order(
++        _conn(request),
++        order_id,
++        body.reason,
++        [(li.sku, li.quantity) for li in body.lines],
++        body.refund,
++        _clock(request),
++    )
++
++
++@router.get("/orders/{order_id}/refunds")
++def get_refunds(request: Request, order_id: int):
++    rows = _conn(request).execute(
++        "SELECT amount, created_at FROM refunds "
++        "WHERE order_id = ?",
++        (order_id,),
++    ).fetchall()
++    return [dict(r) for r in rows]
++
++
+ @router.get("/orders/{order_id}/history")
+ def get_history(request: Request, order_id: int):
+     return orders.status_history(_conn(request), order_id)
+diff --git a/bestellservice/db.py b/bestellservice/db.py
+index e2cfc9b..741a317 100644
+--- a/bestellservice/db.py
++++ b/bestellservice/db.py
+@@ -55,7 +55,15 @@ CREATE TABLE orders (
+     discount      REAL NOT NULL,
+     shipping      REAL NOT NULL,
+     total         REAL NOT NULL,
+-    created_at    TEXT NOT NULL
++    created_at    TEXT NOT NULL,
++    cancelled_at  TEXT,
++    cancel_reason TEXT
++);
++CREATE TABLE refunds (
++    id          INTEGER PRIMARY KEY AUTOINCREMENT,
++    order_id    INTEGER NOT NULL REFERENCES orders(id),
++    amount      REAL NOT NULL,
++    created_at  TEXT NOT NULL
+ );
+ CREATE TABLE order_items (
+     id          INTEGER PRIMARY KEY AUTOINCREMENT,
+diff --git a/bestellservice/inventory.py b/bestellservice/inventory.py
+index 901d1de..a0ebf18 100644
+--- a/bestellservice/inventory.py
++++ b/bestellservice/inventory.py
+@@ -93,6 +93,18 @@ def release(
+         )
+ 
+ 
++def restock(
++    conn: sqlite3.Connection, lines: list[tuple[str, int]]
++) -> None:
++    """Bucht zurückgesandte Ware wieder ins Regal."""
++    for sku, quantity in lines:
++        conn.execute(
++            "UPDATE stock SET on_hand = on_hand + ? "
++            "WHERE sku = ?",
++            (quantity, sku),
++        )
++
++
+ def ship(
+     conn: sqlite3.Connection, lines: list[tuple[str, int]]
+ ) -> None:
+diff --git a/bestellservice/labels.py b/bestellservice/labels.py
+index 707b7d3..3381349 100644
+--- a/bestellservice/labels.py
++++ b/bestellservice/labels.py
+@@ -92,6 +92,14 @@ def get_label(conn: sqlite3.Connection, order_id: int) -> dict:
+     return label_dict(row)
+ 
+ 
++def void_label(conn: sqlite3.Connection, order_id: int):
++    """Storniert das Label einer Bestellung."""
++    _label_row(conn, order_id)
++    conn.execute(
++        "DELETE FROM labels WHERE order_id = ?", (order_id,)
++    )
++
++
+ def create_label(
+     conn: sqlite3.Connection,
+     order: dict,
+diff --git a/bestellservice/models.py b/bestellservice/models.py
+index b857755..87d5d2b 100644
+--- a/bestellservice/models.py
++++ b/bestellservice/models.py
+@@ -40,5 +40,16 @@ class StatusIn(Strict):
+     status: str
+ 
+ 
++class CancelLineIn(Strict):
++    sku: str
++    quantity: int = Field(ge=1)
++
++
++class CancelIn(Strict):
++    reason: str = "Kundenwunsch"
++    lines: list[CancelLineIn] = []
++    refund: bool = True
++
++
+ class StockIn(Strict):
+     on_hand: int
+diff --git a/bestellservice/orders.py b/bestellservice/orders.py
+index 15fb0ef..06e84bf 100644
+--- a/bestellservice/orders.py
++++ b/bestellservice/orders.py
+@@ -30,20 +30,39 @@ STATUS_NEW = "new"
+ STATUS_PAID = "paid"
+ STATUS_PAYMENT_FAILED = "payment_failed"
+ STATUS_SHIPPED = "shipped"
++STATUS_CANCELLED = "cancelled"
++STATUS_PART_CANCELLED = "partially_cancelled"
+ 
+ STATUSES = (
+     STATUS_NEW,
+     STATUS_PAID,
+     STATUS_PAYMENT_FAILED,
+     STATUS_SHIPPED,
++    STATUS_CANCELLED,
++    STATUS_PART_CANCELLED,
+ )
+ 
+ # Erlaubte Statuswechsel.
+ TRANSITIONS = {
+-    STATUS_NEW: {STATUS_PAID, STATUS_PAYMENT_FAILED},
+-    STATUS_PAID: {STATUS_SHIPPED},
++    STATUS_NEW: {
++        STATUS_PAID,
++        STATUS_PAYMENT_FAILED,
++        STATUS_CANCELLED,
++        STATUS_PART_CANCELLED,
++    },
++    STATUS_PAID: {
++        STATUS_SHIPPED,
++        STATUS_CANCELLED,
++        STATUS_PART_CANCELLED,
++    },
++    STATUS_PART_CANCELLED: {
++        STATUS_PAID,
++        STATUS_SHIPPED,
++        STATUS_CANCELLED,
++    },
+     STATUS_PAYMENT_FAILED: set(),
+-    STATUS_SHIPPED: set(),
++    STATUS_SHIPPED: {STATUS_CANCELLED},
++    STATUS_CANCELLED: set(),
+ }
+ 
+ # Datumsformat, das der Kundenservice in der Liste sieht.
+@@ -281,6 +300,75 @@ def set_status(
+     return get_order(conn, order_id)
+ 
+ 
++def _refund_amount(order: dict, lines: list) -> float:
++    """Erstattung: anteilig nach Positionen, ohne Versand."""
++    if not lines:
++        return order["total"]
++    amount = 0.0
++    prices = {i["sku"]: i["unit_price"] for i in order["items"]}
++    for sku, quantity in lines:
++        amount += prices[sku] * quantity
++    if order["discount"]:
++        share = amount / order["subtotal"]
++        amount -= order["discount"] * share
++    return round(amount, 2)
++
++
++def cancel_order(
++    conn: sqlite3.Connection,
++    order_id: int,
++    reason: str,
++    lines: list[tuple[str, int]],
++    refund: bool,
++    clock: Callable[[], datetime] = datetime.now,
++) -> dict:
++    """Storniert eine Bestellung ganz oder teilweise."""
++    order = get_order(conn, order_id)
++    if order["status"] == STATUS_CANCELLED:
++        raise InvalidState("Bestellung ist schon storniert")
++    ordered = dict(_lines(order["items"]))
++    for sku, quantity in lines:
++        if quantity > ordered.get(sku, 0):
++            raise ValidationFailed(
++                f"{sku}: nur {ordered.get(sku, 0)} bestellt"
++            )
++    partial = bool(lines) and lines != _lines(order["items"])
++    if order["tracking_number"] is not None:
++        labels.void_label(conn, order_id)
++    if order["status"] == STATUS_SHIPPED:
++        inventory.restock(conn, lines or _lines(order["items"]))
++    else:
++        inventory.release(conn, lines or _lines(order["items"]))
++    new_status = (
++        STATUS_PART_CANCELLED if partial else STATUS_CANCELLED
++    )
++    now = clock().isoformat(timespec="seconds")
++    conn.execute(
++        "UPDATE orders SET status = ?, cancelled_at = ?, "
++        "cancel_reason = ? WHERE id = ?",
++        (new_status, now, reason, order_id),
++    )
++    for sku, quantity in lines:
++        conn.execute(
++            "UPDATE order_items SET quantity = quantity - ? "
++            "WHERE order_id = ? AND sku = ?",
++            (quantity, order_id, sku),
++        )
++    if refund and order["status"] != STATUS_NEW:
++        conn.execute(
++            "INSERT INTO refunds "
++            "(order_id, amount, created_at) VALUES (?, ?, ?)",
++            (order_id, _refund_amount(order, lines), now),
++        )
++    conn.execute(
++        "INSERT INTO status_log (order_id, old_status, "
++        "new_status, changed_at) VALUES (?, ?, ?, ?)",
++        (order_id, order["status"], new_status, now),
++    )
++    conn.commit()
++    return get_order(conn, order_id)
++
++
+ def status_history(
+     conn: sqlite3.Connection, order_id: int
+ ) -> list[dict]:
+diff --git a/migrations/002_storno.sql b/migrations/002_storno.sql
+new file mode 100644
+index 0000000..305c4ae
+--- /dev/null
++++ b/migrations/002_storno.sql
+@@ -0,0 +1,10 @@
++-- Storno und Erstattung (NL-105)
++ALTER TABLE orders ADD COLUMN cancelled_at TEXT;
++ALTER TABLE orders ADD COLUMN cancel_reason TEXT;
++CREATE TABLE refunds (
++    id          INTEGER PRIMARY KEY AUTOINCREMENT,
++    order_id    INTEGER NOT NULL REFERENCES orders(id),
++    amount      REAL NOT NULL,
++    created_at  TEXT NOT NULL
++);
++CREATE INDEX idx_refunds_order ON refunds(order_id);
+diff --git a/tests/test_cancel.py b/tests/test_cancel.py
+new file mode 100644
+index 0000000..8259ff1
+--- /dev/null
++++ b/tests/test_cancel.py
+@@ -0,0 +1,27 @@
++from conftest import paid_order, place_order
++
++
++def test_cancel_new(client):
++    order_id = place_order(client, [("ZS-2", 2)]).json()["id"]
++    r = client.post(f"/orders/{order_id}/cancel", json={})
++    assert r.status_code == 200
++    assert r.json()["status"] == "cancelled"
++
++
++def test_cancel_partial(client):
++    order = paid_order(client, [("ZS-2", 2)])
++    r = client.post(
++        f"/orders/{order['id']}/cancel",
++        json={"lines": [{"sku": "ZS-2", "quantity": 1}]},
++    )
++    assert r.status_code == 200
++    assert r.json()["status"] == "partially_cancelled"
++    refunds = client.get(f"/orders/{order['id']}/refunds")
++    assert refunds.json()[0]["amount"] == 6.95
++
++
++def test_cancel_with_label(client):
++    order = paid_order(client, [("AKS-18", 1)])
++    client.post(f"/orders/{order['id']}/label")
++    r = client.post(f"/orders/{order['id']}/cancel", json={})
++    assert r.status_code == 200
+diff --git a/tests/test_orders.py b/tests/test_orders.py
+index 252f03d..a324536 100644
+--- a/tests/test_orders.py
++++ b/tests/test_orders.py
+@@ -140,7 +140,7 @@ def test_invalid_transition(client):
+     r = client.post(
+         f"/orders/{order_id}/status", json={"status": "shipped"}
+     )
+-    assert r.status_code == 409
++    assert r.status_code in (409, 422)
+ 
+ 
+ def test_unknown_status(client):

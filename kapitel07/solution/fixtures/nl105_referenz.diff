@@ -1,0 +1,137 @@
+diff --git a/bestellservice/api.py b/bestellservice/api.py
+index 0494e58..c711a1c 100644
+--- a/bestellservice/api.py
++++ b/bestellservice/api.py
+@@ -5,6 +5,7 @@ from fastapi.responses import PlainTextResponse
+ 
+ from . import cart, catalog, inventory, invoice, labels, orders
+ from .models import (
++    CancelIn,
+     CouponIn,
+     ItemIn,
+     OrderIn,
+@@ -157,6 +158,15 @@ def post_status(
+     )
+ 
+ 
++@router.post("/orders/{order_id}/cancel")
++def post_cancel(
++    request: Request, order_id: int, body: CancelIn
++) -> dict:
++    return orders.cancel_order(
++        _conn(request), order_id, body.email, _clock(request)
++    )
++
++
+ @router.get("/orders/{order_id}/history")
+ def get_history(request: Request, order_id: int):
+     return orders.status_history(_conn(request), order_id)
+diff --git a/bestellservice/errors.py b/bestellservice/errors.py
+index 886d7ff..993354a 100644
+--- a/bestellservice/errors.py
++++ b/bestellservice/errors.py
+@@ -19,6 +19,10 @@ class OutOfStock(ShopError):
+     status = 409
+ 
+ 
++class Forbidden(ShopError):
++    status = 403
++
++
+ class InvalidState(ShopError):
+     status = 409
+ 
+diff --git a/bestellservice/models.py b/bestellservice/models.py
+index b857755..7a695ff 100644
+--- a/bestellservice/models.py
++++ b/bestellservice/models.py
+@@ -40,5 +40,9 @@ class StatusIn(Strict):
+     status: str
+ 
+ 
++class CancelIn(Strict):
++    email: str
++
++
+ class StockIn(Strict):
+     on_hand: int
+diff --git a/bestellservice/orders.py b/bestellservice/orders.py
+index 15fb0ef..78c5e07 100644
+--- a/bestellservice/orders.py
++++ b/bestellservice/orders.py
+@@ -20,6 +20,7 @@ from .config import (
+     VAT_PERCENT,
+ )
+ from .errors import (
++    Forbidden,
+     InvalidState,
+     NotFound,
+     ValidationFailed,
+@@ -30,12 +31,14 @@ STATUS_NEW = "new"
+ STATUS_PAID = "paid"
+ STATUS_PAYMENT_FAILED = "payment_failed"
+ STATUS_SHIPPED = "shipped"
++STATUS_CANCELLED = "cancelled"
+ 
+ STATUSES = (
+     STATUS_NEW,
+     STATUS_PAID,
+     STATUS_PAYMENT_FAILED,
+     STATUS_SHIPPED,
++    STATUS_CANCELLED,
+ )
+ 
+ # Erlaubte Statuswechsel.
+@@ -44,6 +47,7 @@ TRANSITIONS = {
+     STATUS_PAID: {STATUS_SHIPPED},
+     STATUS_PAYMENT_FAILED: set(),
+     STATUS_SHIPPED: set(),
++    STATUS_CANCELLED: set(),
+ }
+ 
+ # Datumsformat, das der Kundenservice in der Liste sieht.
+@@ -281,6 +285,44 @@ def set_status(
+     return get_order(conn, order_id)
+ 
+ 
++def cancel_order(
++    conn: sqlite3.Connection,
++    order_id: int,
++    email: str,
++    clock: Callable[[], datetime] = datetime.now,
++) -> dict:
++    """Storno durch den Kunden (NL-105)."""
++    order = get_order(conn, order_id)
++    if email.strip().lower() != order["customer_mail"].lower():
++        raise Forbidden("E-Mail passt nicht zur Bestellung")
++    if order["tracking_number"] is not None:
++        raise InvalidState(
++            "Label existiert, Storno nur über den Kundenservice"
++        )
++    old_status = order["status"]
++    if old_status not in (STATUS_NEW, STATUS_PAID):
++        raise InvalidState(
++            f"Storno im Status {old_status} nicht möglich"
++        )
++    inventory.release(conn, _lines(order["items"]))
++    conn.execute(
++        "UPDATE orders SET status = ? WHERE id = ?",
++        (STATUS_CANCELLED, order_id),
++    )
++    conn.execute(
++        "INSERT INTO status_log (order_id, old_status, "
++        "new_status, changed_at) VALUES (?, ?, ?, ?)",
++        (
++            order_id,
++            old_status,
++            STATUS_CANCELLED,
++            clock().isoformat(timespec="seconds"),
++        ),
++    )
++    conn.commit()
++    return get_order(conn, order_id)
++
++
+ def status_history(
+     conn: sqlite3.Connection, order_id: int
+ ) -> list[dict]:

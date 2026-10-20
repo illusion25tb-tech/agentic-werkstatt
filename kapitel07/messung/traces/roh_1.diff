@@ -1,0 +1,19 @@
+--- bestellservice/api.py
++++ bestellservice/api.py
+
+@@ -33,6 +33,7 @@
+     return PlainTextResponse(text, media_type="text/csv")
+ 
++@router.post("/orders/storm")
++def post_order_storm(request: Request, body: OrderIn) -> dict:
++    return orders.create_order(
++        _conn(request),
++        body.cart_id,
++        body.customer.model_dump(),
++        body.address.model_dump(),
++        _clock(request),
++    )
+ 
+ # ------------------------------------------------------------
+ # Warenkorb
+ # ------------------------------------------------------------

@@ -1,0 +1,9 @@
+roh_0.diff {"bestellservice/orders.py": [74, 159]} | ['233 geänderte Zeilen, erlaubt sind 150. Kleiner schneiden.'] | ['error: corrupt patch at line 269']
+roh_1.diff {"bestellservice/api.py": [9, 0]} | [] | ['error: patch fragment without header at line 4: @@ -33,6 +33,7 @@']
+roh_2.diff {"bestellservice/orders.py": [75, 0]} | [] | ['error: patch fragment without header at line 4: @@ -13,6 +13,7 @@']
+spec_0.diff {"bestellservice/api.py": [1, 0]} | [] | ['error: corrupt patch at line 6']
+spec_1.diff {"bestellservice/api.py": [0, 0]} | ['Der Diff ändert keine Zeile.'] | ['error: corrupt patch at line 11']
+spec_2.diff {"bestellservice/orders.py": [46, 0]} | [] | ['error: corrupt patch at line 54']
+plan 0 False 0 5 repeat 4811
+plan 1 False 0 6 step_budget 3477
+plan 2 True 5 1 None 1819

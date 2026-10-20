@@ -1,0 +1,53 @@
+{
+  "goal": "Bestellung stornieren",
+  "steps": [
+    {
+      "id": "s1",
+      "goal": "Storno einer Bestellung im Status 'new' oder 'paid'",
+      "files": [
+        "bestellservice/orders.py"
+      ],
+      "check": "pytest bestellservice/orders.py::TestOrdersCancelTest::test_cancel_new_paid",
+      "depends_on": []
+    },
+    {
+      "id": "s2",
+      "goal": "Storno einer Bestellung ohne Versandlabel",
+      "files": [
+        "bestellservice/orders.py",
+        "bestellservice/api.py"
+      ],
+      "check": "pytest bestellservice/orders.py::TestOrdersCancelTest::test_cancel_no_label",
+      "depends_on": []
+    },
+    {
+      "id": "s3",
+      "goal": "Storno einer Bestellung im Status 'geschickt', 'zahlungsfehler' oder 'abgeschlossen'",
+      "files": [
+        "bestellservice/orders.py",
+        "bestellservice/api.py"
+      ],
+      "check": "pytest bestellservice/orders.py::TestOrdersCancelTest::test_cancel_shipped_payment_failed_cancelled",
+      "depends_on": []
+    },
+    {
+      "id": "s4",
+      "goal": "Storno einer Bestellung mit einer E-Mail, die nicht zur Bestellung passt",
+      "files": [
+        "bestellservice/orders.py",
+        "bestellservice/api.py"
+      ],
+      "check": "pytest bestellservice/orders.py::TestOrdersCancelTest::test_cancel_invalid_email",
+      "depends_on": []
+    },
+    {
+      "id": "s5",
+      "goal": "Storno einer Bestellung mit einer unbekannten Bestellnummer",
+      "files": [
+        "bestellservice/orders.py"
+      ],
+      "check": "pytest bestellservice/orders.py::TestOrdersCancelTest::test_cancel_unknown_order",
+      "depends_on": []
+    }
+  ]
+}
