@@ -1,7 +1,7 @@
 {
  "schema": "agentic-werkstatt/eval-report",
  "version": 1,
- "k": 1,
+ "k": 3,
  "versions": {
   "model": [
    "llama3.2-16k"
@@ -10,40 +10,42 @@
    "dfd9c2e24713"
   ],
   "harness": [
-   "6262d83ca098"
+   "6262d83ca098",
+   "a90020737d8f"
   ]
  },
  "overall": {
-  "runs": 16,
+  "runs": 30,
   "resolved": 0,
   "rate": 0.0,
   "ci95": [
    0.0,
-   0.1936
+   0.1135
   ],
   "pass_at_k": 0.0,
   "pass_hat_k": 0.0,
   "outcomes": {
-   "übergabe": 16
+   "übergabe": 30
   },
   "cost": {
    "mean": 0.0,
    "stdev": 0.0
   },
   "tool_calls": {
-   "mean": 4.25,
-   "stdev": 5.4099
+   "mean": 5.1,
+   "stdev": 7.0091
   },
-  "asked": 4,
+  "asked": 18,
   "policy": 1,
   "tests_changed": 0,
   "over_budget": 0
  },
  "tasks": {
   "NL-111": {
-   "runs": 2,
+   "runs": 3,
    "resolved": 0,
    "outcomes": [
+    "übergabe",
     "übergabe",
     "übergabe"
    ],
@@ -52,9 +54,10 @@
    "status": "stabil gescheitert"
   },
   "NL-112": {
-   "runs": 2,
+   "runs": 3,
    "resolved": 0,
    "outcomes": [
+    "übergabe",
     "übergabe",
     "übergabe"
    ],
@@ -63,9 +66,10 @@
    "status": "stabil gescheitert"
   },
   "NL-113": {
-   "runs": 2,
+   "runs": 3,
    "resolved": 0,
    "outcomes": [
+    "übergabe",
     "übergabe",
     "übergabe"
    ],
@@ -74,9 +78,10 @@
    "status": "stabil gescheitert"
   },
   "NL-114": {
-   "runs": 2,
+   "runs": 3,
    "resolved": 0,
    "outcomes": [
+    "übergabe",
     "übergabe",
     "übergabe"
    ],
@@ -85,9 +90,10 @@
    "status": "stabil gescheitert"
   },
   "NL-115": {
-   "runs": 2,
+   "runs": 3,
    "resolved": 0,
    "outcomes": [
+    "übergabe",
     "übergabe",
     "übergabe"
    ],
@@ -96,9 +102,10 @@
    "status": "stabil gescheitert"
   },
   "NL-116": {
-   "runs": 2,
+   "runs": 3,
    "resolved": 0,
    "outcomes": [
+    "übergabe",
     "übergabe",
     "übergabe"
    ],
@@ -107,9 +114,11 @@
    "status": "stabil gescheitert"
   },
   "NL-117": {
-   "runs": 1,
+   "runs": 3,
    "resolved": 0,
    "outcomes": [
+    "übergabe",
+    "übergabe",
     "übergabe"
    ],
    "pass_at_k": 0.0,
@@ -117,9 +126,11 @@
    "status": "stabil gescheitert"
   },
   "NL-118": {
-   "runs": 1,
+   "runs": 3,
    "resolved": 0,
    "outcomes": [
+    "übergabe",
+    "übergabe",
     "übergabe"
    ],
    "pass_at_k": 0.0,
@@ -127,9 +138,11 @@
    "status": "stabil gescheitert"
   },
   "NL-119": {
-   "runs": 1,
+   "runs": 3,
    "resolved": 0,
    "outcomes": [
+    "übergabe",
+    "übergabe",
     "übergabe"
    ],
    "pass_at_k": 0.0,
@@ -137,9 +150,11 @@
    "status": "stabil gescheitert"
   },
   "NL-120": {
-   "runs": 1,
+   "runs": 3,
    "resolved": 0,
    "outcomes": [
+    "übergabe",
+    "übergabe",
     "übergabe"
    ],
    "pass_at_k": 0.0,

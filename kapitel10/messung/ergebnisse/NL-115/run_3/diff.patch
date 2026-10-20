@@ -1,0 +1,8 @@
+diff --git a/tests/test_nl_115_regression.py b/tests/test_nl_115_regression.py
+new file mode 100644
+index 0000000..3f47990
+--- /dev/null
++++ b/tests/test_nl_115_regression.py
+@@ -0,0 +1,2 @@
++def test_nl_115_regression():
++assert shipping_costs == 4.95

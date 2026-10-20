@@ -2,6 +2,7 @@
 liefert. Noch ohne schreibende Tools und ohne Policy."""
 import inspect
 import json
+import threading
 import time
 
 from pydantic import BaseModel, Field
@@ -33,9 +34,15 @@ class Plan(BaseModel):
     risks: list[str]
 
 
+# Parallele Tool Calls laufen in Threads; ohne Sperre
+# überschreiben sich Anhänge (Windows, Kap. 10).
+_TRACE_LOCK = threading.Lock()
+
+
 def log(deps: Deps, **rec) -> None:
     rec = {"ts": round(time.time(), 3), **rec}
-    with deps.trace.open("a", encoding="utf-8") as f:
+    with _TRACE_LOCK, deps.trace.open(
+            "a", encoding="utf-8") as f:
         f.write(json.dumps(rec, ensure_ascii=False) + "\n")
 
 

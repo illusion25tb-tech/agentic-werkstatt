@@ -1,0 +1,13 @@
+diff --git a/tests/test_get_sendungsnummer.py b/tests/test_get_sendungsnummer.py
+new file mode 100644
+index 0000000..23fa43c
+--- /dev/null
++++ b/tests/test_get_sendungsnummer.py
+@@ -0,0 +1,6 @@
++import pytest
++import bestellservice
++
++def test_get_sendungsnummer():
++    with pytest.raises(ValueError):
++        bestellservice.get_sendungsnummer(12345)
+\ No newline at end of file

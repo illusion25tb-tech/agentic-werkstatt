@@ -30,3 +30,57 @@ NL-114 2 übergabe
 NL-115 2 übergabe
 Übergabe an Menschen: Exceeded maximum output retries (3). Branch butler/NL-116 bleibt zum Ansehen stehen.
 NL-116 2 übergabe
+Übergabe an Menschen: Exceeded maximum output retries (3). Branch butler/NL-117 bleibt zum Ansehen stehen.
+NL-117 2 übergabe
+Übergabe an Menschen: Umsetzung ohne grüne Suite beendet. Branch butler/NL-118 bleibt zum Ansehen stehen.
+NL-118 2 übergabe
+Übergabe an Menschen: Umsetzung ohne grüne Suite beendet. Branch butler/NL-119 bleibt zum Ansehen stehen.
+NL-119 2 übergabe
+Übergabe an Menschen: Exceeded maximum output retries (3). Branch butler/NL-120 bleibt zum Ansehen stehen.
+NL-120 2 übergabe
+Übergabe an Menschen: Exceeded maximum output retries (3). Branch butler/NL-111 bleibt zum Ansehen stehen.
+NL-111 3 übergabe
+Übergabe an Menschen: Exceeded maximum output retries (3). Branch butler/NL-112 bleibt zum Ansehen stehen.
+NL-112 3 übergabe
+Übergabe an Menschen: Umsetzung ohne grüne Suite beendet. Branch butler/NL-113 bleibt zum Ansehen stehen.
+NL-113 3 übergabe
+Übergabe an Menschen: Umsetzung ohne grüne Suite beendet. Branch butler/NL-114 bleibt zum Ansehen stehen.
+NL-114 3 übergabe
+Übergabe an Menschen: Umsetzung ohne grüne Suite beendet. Branch butler/NL-115 bleibt zum Ansehen stehen.
+NL-115 3 übergabe
+Übergabe an Menschen: Exceeded maximum output retries (3). Branch butler/NL-116 bleibt zum Ansehen stehen.
+NL-116 3 übergabe
+Übergabe an Menschen: Exceeded maximum output retries (3). Branch butler/NL-117 bleibt zum Ansehen stehen.
+NL-117 3 übergabe
+Übergabe an Menschen: Umsetzung ohne grüne Suite beendet. Branch butler/NL-118 bleibt zum Ansehen stehen.
+NL-118 3 übergabe
+Übergabe an Menschen: Exceeded maximum output retries (3). Branch butler/NL-119 bleibt zum Ansehen stehen.
+NL-119 3 übergabe
+Übergabe an Menschen: 3 rote Testläufe in Folge. Branch butler/NL-120 bleibt zum Ansehen stehen.
+Traceback (most recent call last):
+  File "C:\Users\ToertjeB\CLAUDE\Bücher\#36 B_Durchstarten mit Agentic Coding\code\kapitel10\solution\run_suite.py", line 70, in <module>
+    main()
+  File "C:\Users\ToertjeB\CLAUDE\Bücher\#36 B_Durchstarten mit Agentic Coding\code\kapitel10\solution\run_suite.py", line 58, in main
+    neu = suite(
+          ^^^^^^
+  File "C:\Users\ToertjeB\CLAUDE\Bücher\#36 B_Durchstarten mit Agentic Coding\code\kapitel10\solution\run_suite.py", line 32, in suite
+    rec = run_one(t, i, **kw)
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ToertjeB\CLAUDE\Bücher\#36 B_Durchstarten mit Agentic Coding\code\kapitel10\solution\run_one.py", line 94, in run_one
+    rec |= metrics(trace, task.expected_files)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ToertjeB\CLAUDE\Bücher\#36 B_Durchstarten mit Agentic Coding\code\kapitel10\solution\metrics.py", line 26, in metrics
+    r = json.loads(line)
+        ^^^^^^^^^^^^^^^^
+  File "C:\Users\ToertjeB\AppData\Local\Programs\Python\Python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ToertjeB\AppData\Local\Programs\Python\Python312\Lib\json\decoder.py", line 338, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ToertjeB\AppData\Local\Programs\Python\Python312\Lib\json\decoder.py", line 356, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Übergabe an Menschen: Umsetzung ohne grüne Suite beendet. Branch butler/NL-120 bleibt zum Ansehen stehen.
+NL-120 3 übergabe
+1 neue Runs in ..\messung\ergebnisse\results.jsonl
