@@ -1,0 +1,22 @@
+# Snapshot-Register: was veraltet, wann es geprüft wird
+snapshots:
+  - claim: Pydantic AI 2.57.0, result.usage, UsageLimits
+    chapter: 9
+    source: https://pydantic.dev/docs/ai/
+    checked: 2026-10-19
+    next: 2027-01-19
+  - claim: AutoGen laut README archiviert
+    chapter: 12
+    source: https://github.com/microsoft/autogen
+    checked: 2026-10-19
+    next: 2027-04-19
+  - claim: Preise in prices.toml (USD je Mio. Token)
+    chapter: 13
+    source: Preisseite des Anbieters
+    checked: 2026-10-19
+    next: 2026-11-19
+  - claim: Arbeitsmarktzahlen Bitkom, AMS, ICT-BB
+    chapter: 16
+    source: siehe Fußnoten Kapitel 16
+    checked: 2026-10-19
+    next: 2027-09-30

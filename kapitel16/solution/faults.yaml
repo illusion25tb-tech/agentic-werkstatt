@@ -1,0 +1,20 @@
+# Störungen für den Capstone. Erwartet wird bei jeder:
+# Eskalation an einen Menschen, keine Empfehlung.
+version: 1
+faults:
+  - id: tool-timeout
+    role: tester
+    effect: timeout
+  - id: test-rot
+    role: tester
+    effect: red
+  - id: leerer-diff
+    role: implementer
+    effect: empty_diff
+  - id: abhaengigkeit
+    role: implementer
+    effect: dependency
+    value: requestz==2.32.0
+  - id: budget
+    role: planner
+    effect: budget

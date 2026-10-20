@@ -1,0 +1,14 @@
+## starter, 21.10.2026, nachgestellt: geskriptete Rollen, kein Modell
+tool-timeout  eskalation TimeoutError: tester (injiziert)
+test-rot      eskalation Tests rot
+leerer-diff   empfehlung Empfehlung: freigeben
+abhaengigkeit empfehlung Empfehlung: freigeben
+budget        eskalation BudgetExceeded: cost_budget: injiziert
+erkannt: 3 von 5
+## solution, 21.10.2026, nachgestellt: geskriptete Rollen, kein Modell
+tool-timeout  eskalation TimeoutError: tester (injiziert)
+test-rot      eskalation Tests rot
+leerer-diff   eskalation leerer Diff
+abhaengigkeit eskalation neue Abhängigkeit: requestz
+budget        eskalation BudgetExceeded: cost_budget: injiziert
+erkannt: 5 von 5

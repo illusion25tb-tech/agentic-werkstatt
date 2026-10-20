@@ -1,0 +1,39 @@
+name: snapshot-check
+on:
+  schedule:
+    - cron: "23 3 1 * *"        # monatlich, am 1., UTC
+  workflow_dispatch:            # Probelauf von Hand
+permissions:
+  contents: read
+jobs:
+  pruefen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      issues: write             # nur für das Issue bei Rot
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v10.3.0
+      - name: Tests mit neuesten erlaubten Versionen
+        run: |
+          for d in kapitel*/solution; do
+            echo "== $d"
+            (cd "$d" && uv run --upgrade pytest -q) || exit 1
+          done
+      - name: Snapshot-Register
+        run: >-
+          uv run --project kapitel16/solution python
+          kapitel16/solution/snapshots.py
+          kapitel16/solution/snapshots.yaml
+      - name: Issue bei Rot
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          LAUF: ${{ github.run_id }}
+        run: >-
+          gh issue create --title "snapshot-check rot"
+          --body "Tests rot oder Snapshot fällig, Run $LAUF"

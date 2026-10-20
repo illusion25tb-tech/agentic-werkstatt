@@ -1,0 +1,10 @@
+$ python report.py "Baseline 10 Aufgaben=kapitel10/messung/ergebnisse/results.jsonl" "Baseline 5 Aufgaben=kapitel12/messung/baseline_gleiche_aufgaben/results.jsonl" "Rollen 5 Aufgaben=kapitel12/messung/ergebnisse_multi/results.jsonl"   (21.10.2026, vorhandene echte Ergebnisdateien, keine neuen Runs)
+| Variante | Runs | gelöst (95 %) | Tool Calls Ø | Token Median | Sekunden Median | Policy | Reviews |
+|---|---|---|---|---|---|---|---|
+| Baseline 10 Aufgaben | 30 | 0/30 (0%–11%) | 5.1 (0–29) | 8725 (4165–36209) | 93 (39–749) | 1 | – |
+| Baseline 5 Aufgaben | 15 | 0/15 (0%–20%) | 4.4 (0–22) | 6696 (4190–35704) | 86 (39–660) | 1 | – |
+| Rollen 5 Aufgaben | 15 | 0/15 (0%–20%) | 3.1 (0–10) | 7298 (2010–14217) | 101 (9–742) | 2 | 0 |
+
+- Baseline 10 Aufgaben: model llama3.2-16k; prompt dfd9c2e24713; harness 6262d83ca098, a90020737d8f; Ausgänge übergabe 30
+- Baseline 5 Aufgaben: model llama3.2-16k; prompt dfd9c2e24713; harness 6262d83ca098, a90020737d8f; Ausgänge übergabe 15
+- Rollen 5 Aufgaben: model llama3.2-16k; prompt 3439f41e631b; harness 9f8ac1a324d2; Ausgänge absturz 1, budget 1, übergabe 13

@@ -1,0 +1,3 @@
+## actionlint 1.7.12 (Windows-Binary), 21.10.2026, ohne shellcheck/pyflakes
+$ actionlint .github/workflows/snapshot-check.yml
+Exit-Code 0
