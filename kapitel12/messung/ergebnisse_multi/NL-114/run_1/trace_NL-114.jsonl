@@ -1,0 +1,8 @@
+{"role": "planner", "round": 0, "ts": 1792508995.578, "tool": "search", "args": {"pattern": "(", "path": "."}, "obs": "FEHLER [invalid_args]: Regex: missing ), unterminated subpattern at position 0"}
+{"role": "planner", "round": 0, "ts": 1792509043.309, "phase": "work", "requests": 2, "tool_calls": 1, "input_tokens": 1482, "output_tokens": 647, "peak_input": 844}
+{"role": "planner", "round": 0, "ts": 1792509647.856, "plan_rejected": ["orders.py", "payment_service.py"]}
+{"role": "planner", "round": 0, "ts": 1792509650.828, "plan_rejected": ["orders.py", "payment_service.py"]}
+{"role": "planner", "round": 0, "ts": 1792509653.855, "plan_rejected": ["orders.py", "payment_service.py"]}
+{"role": "planner", "round": 0, "ts": 1792509658.173, "plan_rejected": ["orders.py", "payment_service.py"]}
+{"role": "planner", "round": 0, "ts": 1792509658.182, "phase": "form", "requests": 4, "tool_calls": 0, "input_tokens": 4190, "output_tokens": 178, "peak_input": 1156}
+{"ts": 1792509658.191, "role": "orchestrator", "abort": "UnexpectedModelBehavior: Exceeded maximum output retries (3)"}

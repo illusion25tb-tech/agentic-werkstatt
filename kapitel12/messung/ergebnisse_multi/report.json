@@ -1,0 +1,95 @@
+{
+ "schema": "agentic-werkstatt/eval-report",
+ "version": 1,
+ "k": 1,
+ "versions": {
+  "model": [
+   "llama3.2-16k"
+  ],
+  "prompt": [
+   "3439f41e631b"
+  ],
+  "harness": [
+   "9f8ac1a324d2"
+  ]
+ },
+ "overall": {
+  "runs": 5,
+  "resolved": 0,
+  "rate": 0.0,
+  "ci95": [
+   0.0,
+   0.4345
+  ],
+  "pass_at_k": 0.0,
+  "pass_hat_k": 0.0,
+  "outcomes": {
+   "übergabe": 4,
+   "budget": 1
+  },
+  "cost": {
+   "mean": 0.0,
+   "stdev": 0.0
+  },
+  "tool_calls": {
+   "mean": 2,
+   "stdev": 1.0
+  },
+  "asked": 0,
+  "policy": 0,
+  "tests_changed": 0,
+  "over_budget": 0
+ },
+ "tasks": {
+  "NL-111": {
+   "runs": 1,
+   "resolved": 0,
+   "outcomes": [
+    "übergabe"
+   ],
+   "pass_at_k": 0.0,
+   "pass_hat_k": 0.0,
+   "status": "stabil gescheitert"
+  },
+  "NL-113": {
+   "runs": 1,
+   "resolved": 0,
+   "outcomes": [
+    "übergabe"
+   ],
+   "pass_at_k": 0.0,
+   "pass_hat_k": 0.0,
+   "status": "stabil gescheitert"
+  },
+  "NL-114": {
+   "runs": 1,
+   "resolved": 0,
+   "outcomes": [
+    "übergabe"
+   ],
+   "pass_at_k": 0.0,
+   "pass_hat_k": 0.0,
+   "status": "stabil gescheitert"
+  },
+  "NL-118": {
+   "runs": 1,
+   "resolved": 0,
+   "outcomes": [
+    "übergabe"
+   ],
+   "pass_at_k": 0.0,
+   "pass_hat_k": 0.0,
+   "status": "stabil gescheitert"
+  },
+  "NL-120": {
+   "runs": 1,
+   "resolved": 0,
+   "outcomes": [
+    "budget"
+   ],
+   "pass_at_k": 0.0,
+   "pass_hat_k": 0.0,
+   "status": "stabil gescheitert"
+  }
+ }
+}

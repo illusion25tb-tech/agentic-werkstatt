@@ -1,0 +1,21 @@
+[project]
+name = "kapitel12-solution"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic-ai-slim[openai]==2.57.0",
+]
+
+[tool.ruff]
+line-length = 64
+
+[tool.pytest.ini_options]
+testpaths = ["."]
+norecursedirs = ["fixtures", ".venv"]
+filterwarnings = ["ignore::DeprecationWarning:pydantic_graph"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.17.1",
+]
