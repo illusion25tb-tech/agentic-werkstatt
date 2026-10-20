@@ -55,6 +55,8 @@ class ButlerReport(BaseModel):
 # Parallele Tool Calls laufen in Threads; ohne Sperre
 # überschreiben sich Anhänge (Windows, Kap. 10).
 _TRACE_LOCK = threading.Lock()
+# Ändern das Repo: nie parallel (Absturz in Kap. 12)
+SERIELL = {"replace_in_file", "create_test", "run_tests"}
 
 
 def log(deps: Deps, **rec) -> None:
@@ -89,7 +91,8 @@ def guarded(fn) -> Tool:
         "ctx": RunContext[Deps], "return": str,
         **{p.name: p.annotation for p in rest}}
     wrapper.__name__, wrapper.__doc__ = fn.__name__, fn.__doc__
-    return Tool(wrapper, takes_ctx=True)
+    return Tool(wrapper, takes_ctx=True,  # Git-Index, Dateien:
+                sequential=fn.__name__ in SERIELL)
 
 
 def instructions(ctx: RunContext[Deps]) -> str:

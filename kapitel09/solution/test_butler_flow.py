@@ -118,3 +118,11 @@ def test_plan_abgelehnt_nichts_geaendert(repo, tmp_path):
     assert code == 1 and fragen == ["plan"]
     assert git_ops.git(repo, "status", "--porcelain") == ""
     assert git_ops.git(repo, "branch") == "* main\n"
+
+
+def test_schreibende_tools_laufen_nie_parallel():
+    import agent
+    from tools_read import read_file
+    from tools_write import create_test
+    assert agent.guarded(create_test).sequential
+    assert not agent.guarded(read_file).sequential
