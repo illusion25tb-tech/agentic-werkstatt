@@ -1,0 +1,5 @@
+# Wer hier steht, muss Änderungen an diesen Pfaden zustimmen.
+/.github/                      @nordlicht/entwicklungsleitung
+/kapitel14/solution/evals/     @nordlicht/entwicklungsleitung
+/bestellservice/tests/         @nordlicht/entwicklungsleitung
+/bestellservice/pyproject.toml @nordlicht/entwicklungsleitung

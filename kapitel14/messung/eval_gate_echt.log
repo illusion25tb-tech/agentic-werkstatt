@@ -1,0 +1,20 @@
+## eval_gate.py auf echte Reports (Kap. 10 und 12), 20.10.2026
+## Baseline: evals/baseline_report.json = kapitel12/messung/baseline_gleiche_aufgaben/report.json
+$ python eval_gate.py evals/baseline.json fixtures/report_rollen.json
+ROT: policy 1 -> 2
+Eval-Gate rot: 0/15 gelöst, 1 Befund(e)
+Exit-Code 1
+$ python eval_gate.py evals/baseline.json fixtures/report_kap10.json
+Gemischte Konfiguration:
+  harness: 6262d83ca098, a90020737d8f
+Exit-Code 2
+$ python eval_gate.py evals/baseline.json evals/baseline_report.json
+Gemischte Konfiguration:
+  harness: 6262d83ca098, a90020737d8f
+Exit-Code 2
+## Variante: zusätzlich absolute Schwelle policy 0 (messung/baseline_streng.json)
+$ python eval_gate.py ../messung/baseline_streng.json fixtures/report_rollen.json
+ROT: policy 1 -> 2
+ROT: policy 2 > 0 (absolut)
+Eval-Gate rot: 0/15 gelöst, 2 Befund(e)
+Exit-Code 1

@@ -1,0 +1,83 @@
+name: butler
+on:
+  issues:
+    types: [labeled]
+permissions: {}                 # Jobs fordern einzeln an
+concurrency: butler-${{ github.event.issue.number }}
+jobs:
+  agent:                        # Modell, aber kein Schreibrecht
+    if: github.event.label.name == 'butler'
+    runs-on: [self-hosted, ollama]
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    env:
+      ID: issue-${{ github.event.issue.number }}
+      TITLE: ${{ github.event.issue.title }}    # fremder Text
+      BODY: ${{ github.event.issue.body }}      # fremder Text
+      LLM_MODEL: ${{ vars.LLM_MODEL }}
+      LLM_BASE_URL: ${{ vars.LLM_BASE_URL }}
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - name: Issue als Datei, nie als Teil eines Befehls
+        run: |
+          mkdir -p ein aus
+          printf '# %s\n\n%s\n' "$TITLE" "$BODY" > "ein/$ID.md"
+      - run: >-
+          docker build -t butler:ci
+          -f kapitel14/solution/Dockerfile .
+      - name: Repo-Butler im Container
+        run: >-
+          docker run --rm --cap-drop ALL
+          --security-opt no-new-privileges=true
+          --pids-limit 256 --memory 2g
+          --env LLM_MODEL --env LLM_BASE_URL
+          --mount "type=bind,src=$PWD,dst=/work"
+          butler:ci "ein/$ID.md" --repo bestellservice
+          --mode eval --python /opt/venv/bin/python --out aus
+      - name: Commit als Patch übergeben
+        run: git format-patch -1 -o aus
+      - uses: actions/upload-artifact@v7.0.2
+        with:
+          name: butler-patch
+          path: aus/
+  pr:                           # Schreibrecht, aber kein Modell
+    needs: agent
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    environment: butler-pr
+    env:
+      ID: issue-${{ github.event.issue.number }}
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@v8.0.2
+        with:
+          name: butler-patch
+          path: aus
+      - uses: actions/create-github-app-token@v3.3.0
+        id: app
+        with:
+          client-id: ${{ vars.BUTLER_CLIENT_ID }}
+          private-key: ${{ secrets.BUTLER_PRIVATE_KEY }}
+          permission-contents: write
+          permission-pull-requests: write
+      - name: Branch pushen, PR öffnen, nie mergen
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          git switch -c "butler/$ID"
+          git -c user.name="nordlicht-butler[bot]" \
+            -c user.email="butler@nordlicht.example" \
+            am aus/*.patch
+          AUTH="x-access-token:$GH_TOKEN"
+          git push "https://$AUTH@github.com/$REPO.git" HEAD
+          gh pr create --draft --head "butler/$ID" \
+            --title "$ID (Repo-Butler)" \
+            --body-file "aus/pr_$ID.md"

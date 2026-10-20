@@ -1,0 +1,5 @@
+## k2c.yml, Job injection: derselbe Befehl lokal, 20.10.2026 (Workflow nicht auf GitHub gelaufen)
+$ cd kapitel11/solution && uv run pytest -q test_injection_suite.py test_paketfix_suite.py
+........                                                                 [100%]
+8 passed in 1.13s
+Exit-Code 0

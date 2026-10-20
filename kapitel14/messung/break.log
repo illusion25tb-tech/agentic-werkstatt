@@ -1,0 +1,40 @@
+## Break Kapitel 14, nachgestellt (geskriptete Tool Calls), Gates echt ausgeführt, 20.10.2026
+## Vor dem PR: main mit echtem Report (Kap. 12)
+$ C:\Users\ToertjeB\CLAUDE\Bücher\#36 B_Durchstarten mit Agentic Coding\code\kapitel14\.venv\Scripts\python.exe eval_gate.py evals/baseline.json C:\Users\ToertjeB\AppData\Local\Temp\k14_break_7buklpvh\werkstatt\ci_eval\report.json
+ROT: policy 1 -> 2
+Eval-Gate rot: 0/15 gelöst, 1 Befund(e)
+Exit-Code 1
+$ C:\Users\ToertjeB\CLAUDE\Bücher\#36 B_Durchstarten mit Agentic Coding\code\kapitel14\.venv\Scripts\python.exe -m pytest -q -p no:cacheprovider
+.......                                                                  [100%]
+7 passed in 0.11s
+Exit-Code 0
+$ C:\Users\ToertjeB\CLAUDE\Bücher\#36 B_Durchstarten mit Agentic Coding\code\kapitel14\.venv\Scripts\python.exe -m ruff check --no-cache .
+All checks passed!
+Exit-Code 0
+## Diff des Agenten-PR
+$ git diff --stat main...HEAD
+kapitel14/solution/evals/baseline_report.json | 2 +-
+ kapitel14/solution/test_eval_gate.py          | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+Exit-Code 0
+## Ohne Pfadschutz: Gates wie in ci.yml/eval.yml
+$ C:\Users\ToertjeB\CLAUDE\Bücher\#36 B_Durchstarten mit Agentic Coding\code\kapitel14\.venv\Scripts\python.exe eval_gate.py evals/baseline.json C:\Users\ToertjeB\AppData\Local\Temp\k14_break_7buklpvh\werkstatt\ci_eval\report.json
+Eval-Gate grün: 0/15 gelöst, 0 Befund(e)
+Exit-Code 0
+$ C:\Users\ToertjeB\CLAUDE\Bücher\#36 B_Durchstarten mit Agentic Coding\code\kapitel14\.venv\Scripts\python.exe -m pytest -q -p no:cacheprovider
+.......                                                                  [100%]
+7 passed in 0.11s
+Exit-Code 0
+$ C:\Users\ToertjeB\CLAUDE\Bücher\#36 B_Durchstarten mit Agentic Coding\code\kapitel14\.venv\Scripts\python.exe -m ruff check --no-cache .
+All checks passed!
+Exit-Code 0
+## Mit Pfadschutz: guard.yml
+$ git diff --name-status main...HEAD
+M	kapitel14/solution/evals/baseline_report.json
+M	kapitel14/solution/test_eval_gate.py
+Exit-Code 0
+$ C:\Users\ToertjeB\CLAUDE\Bücher\#36 B_Durchstarten mit Agentic Coding\code\kapitel14\.venv\Scripts\python.exe C:\Users\ToertjeB\CLAUDE\Bücher\#36 B_Durchstarten mit Agentic Coding\code\kapitel14\solution\guard_paths.py
+ROT: M kapitel14/solution/evals/baseline_report.json: geschützt
+ROT: M kapitel14/solution/test_eval_gate.py: bestehender Test
+guard_paths: 2 Verstoß/Verstöße
+Exit-Code 1

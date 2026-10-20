@@ -1,0 +1,6 @@
+# Repo-Butler (Kap. 9) + bestellservice-Tests, für das Image
+pydantic-ai-slim[openai]==2.57.0
+fastapi>=0.115
+httpx>=0.27
+pytest>=8
+ruff>=0.17

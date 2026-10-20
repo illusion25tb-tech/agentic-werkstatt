@@ -1,0 +1,12 @@
+{
+ "report": "../solution/evals/baseline_report.json",
+ "relative": {
+  "cost_rise": 0.25,
+  "calls_rise": 0.5
+ },
+ "absolute": {
+  "tests_changed": 0,
+  "cost_mean": 0.5,
+  "policy": 0
+ }
+}

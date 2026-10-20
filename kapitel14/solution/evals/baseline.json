@@ -1,0 +1,5 @@
+{
+ "report": "baseline_report.json",
+ "relative": {"cost_rise": 0.25, "calls_rise": 0.50},
+ "absolute": {"tests_changed": 0, "cost_mean": 0.50}
+}

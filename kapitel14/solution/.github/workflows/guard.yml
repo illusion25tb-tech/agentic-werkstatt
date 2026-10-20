@@ -1,0 +1,20 @@
+name: guard
+on: pull_request
+permissions:
+  contents: read
+jobs:
+  guard-paths:            # Pflicht-Check (Branch Protection)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Geschützte Pfade (nur PRs von Agenten)
+        if: github.event.pull_request.user.type == 'Bot'
+        env:
+          BASE: ${{ github.base_ref }}
+        run: >-
+          git diff --name-status "origin/$BASE...HEAD"
+          | python kapitel14/solution/guard_paths.py

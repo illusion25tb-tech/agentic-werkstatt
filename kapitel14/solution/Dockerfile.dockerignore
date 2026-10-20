@@ -1,0 +1,6 @@
+**
+!kapitel09/solution/
+kapitel09/solution/.venv
+**/__pycache__
+**/.pytest_cache
+!kapitel14/solution/agent-requirements.txt

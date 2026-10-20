@@ -1,0 +1,3 @@
+## actionlint 1.7.12 (Windows-Binary), 20.10.2026, ohne shellcheck/pyflakes
+$ actionlint -config-file .github/actionlint.yaml .github/workflows/*.yml
+Exit-Code 0

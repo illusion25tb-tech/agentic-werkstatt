@@ -1,0 +1,26 @@
+name: deploy
+on:
+  push:
+    tags: ["v*"]                # Release-Tag setzt ein Mensch
+permissions: {}
+concurrency: produktion         # nie zwei Deploys zugleich
+jobs:
+  produktion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: produktion     # wartet auf Required Reviewer
+    permissions:
+      contents: read
+      id-token: write           # OIDC, nur in diesem Job
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - name: OIDC-Token holen, damit ausrollen
+        run: |
+          A=$ACTIONS_ID_TOKEN_REQUEST_TOKEN
+          U=$ACTIONS_ID_TOKEN_REQUEST_URL
+          JWT=$(curl -sSf -H "Authorization: bearer $A" \
+            "$U&audience=nordlicht-deploy" | jq -r .value)
+          echo "::add-mask::$JWT"
+          ./betrieb/ausrollen.sh "$GITHUB_REF_NAME" "$JWT"

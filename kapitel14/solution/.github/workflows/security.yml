@@ -1,0 +1,31 @@
+name: security
+on: pull_request
+permissions:
+  contents: read
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v10.3.0
+      - name: Secrets in den Commits des PR (gitleaks)
+        env:
+          BASE: ${{ github.base_ref }}
+          V: "8.30.1"
+          GL: https://github.com/gitleaks/gitleaks/releases
+        run: |
+          F="gitleaks_${V}_linux_x64.tar.gz"
+          curl -sSfL "$GL/download/v$V/$F" | tar xz gitleaks
+          ./gitleaks git --log-opts="origin/$BASE..HEAD" .
+      - name: Bekannte Schwachstellen (pip-audit)
+        working-directory: bestellservice
+        run: |
+          uv export --no-dev --no-hashes -o /tmp/req.txt
+          uvx pip-audit==2.10.1 -r /tmp/req.txt
+      - name: Bandit-Regeln (Ruff, Familie S)
+        working-directory: bestellservice
+        run: uvx ruff@0.17.1 check --select S bestellservice

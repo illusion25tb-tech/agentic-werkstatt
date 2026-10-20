@@ -1,0 +1,10 @@
+## eval.yml, Job geskriptet (Stufe a), korrigiert: je Kapitel im eigenen Verzeichnis, 20.10.2026
+## lokale venvs kapitel10/.venv und kapitel11/.venv; Workflow nicht auf GitHub gelaufen
+$ cd kapitel10/solution && uv run pytest -q
+..................                                                       [100%]
+18 passed in 10.65s
+Exit-Code 0
+$ cd kapitel11/solution && uv run pytest -q
+..................s..................                                    [100%]
+36 passed, 1 skipped in 1.43s
+Exit-Code 0

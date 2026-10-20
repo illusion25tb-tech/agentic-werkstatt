@@ -1,0 +1,10 @@
+## uv-Befehle aus dem Kapitelende, in einer Kopie von kapitel14/solution, 20.10.2026, uv 0.13.1
+$ uv add --dev pytest pyyaml ruff
+ + pytest==9.1.1
+ + pyyaml==6.0.3
+ + ruff==0.17.1
+Exit-Code 0
+$ uv run pytest -q
+........................                                                 [100%]
+24 passed in 0.60s
+Exit-Code 0

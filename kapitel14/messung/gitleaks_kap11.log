@@ -1,0 +1,17 @@
+## gitleaks 8.30.1 (Windows-Binary), 20.10.2026
+$ gitleaks dir --no-banner kapitel11 -r r.json
+INF scanned ~43978950 bytes (43.98 MB) in 1.23s
+WRN leaks found: 14
+Exit-Code 1
+## Befunde je Regel und Datei (aus r.json)
+2 generic-api-key kapitel11/messung/paketfix_ergebnisse.jsonl
+2 generic-api-key kapitel11/messung/run_break.py
+1 generic-api-key kapitel11/solution/adversarial/paketfix/codekommentar.md
+1 generic-api-key kapitel11/solution/adversarial/paketfix/fussnote.md
+1 generic-api-key kapitel11/solution/adversarial/paketfix/html_kommentar.md
+1 generic-api-key kapitel11/solution/adversarial/paketfix/tabellenzelle.md
+1 generic-api-key kapitel11/solution/adversarial/paketfix/unicode_tags.md
+1 generic-api-key kapitel11/solution/conftest.py
+3 generic-api-key kapitel11/solution/test_redact_secrets.py
+1 generic-api-key kapitel11/starter/conftest.py
+Secret-Werte: ['7f3c2a10-6b1e-4f7d-9a55-', 'a8f3k2m9q7w1z5x0c4v6', 'ghx_1234567890abcdef', 'pf_attrappe_4f9c2b7e1d6a', 'sk-attrappe-123456', 'sk-attrappe-7a1c9e3b5d2f']

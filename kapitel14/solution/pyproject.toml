@@ -1,0 +1,20 @@
+[project]
+name = "kapitel14-solution"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "pyyaml>=6",
+    "ruff>=0.17.1",
+]
+
+[tool.ruff]
+line-length = 64
+
+[tool.pytest.ini_options]
+testpaths = ["."]
+pythonpath = ["."]
+norecursedirs = ["fixtures", "evals", ".venv", ".github"]

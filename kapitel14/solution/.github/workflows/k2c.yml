@@ -1,0 +1,34 @@
+name: k2c
+on:
+  pull_request:
+    paths:
+      - "bestellservice/docs/paketfix/**"
+      - "bestellservice/bestellservice/paketfix_*.py"
+      - "bestellservice/tests/fixtures/paketfix/**"
+permissions:
+  contents: read
+jobs:
+  injection:                  # Pflicht: Kapitel 11
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v10.3.0
+      - run: >-
+          uv run pytest -q test_injection_suite.py
+          test_paketfix_suite.py
+        working-directory: kapitel11/solution
+  provenienz:                 # Quellen und Attrappen
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - run: >-
+          python kapitel14/solution/check_k2c.py
+          --root bestellservice
+          bestellservice/bestellservice/paketfix_client.py
+          bestellservice/tests/fixtures/paketfix/*.json

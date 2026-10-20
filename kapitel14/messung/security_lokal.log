@@ -1,0 +1,25 @@
+## security.yml, Job scan: dieselben Befehle lokal, 20.10.2026 (Workflow nicht auf GitHub gelaufen)
+$ uv export --no-dev --no-hashes -o req.txt
+    #   pydantic
+Exit-Code 0
+annotated-doc==0.0.5
+annotated-types==0.8.0
+anyio==4.15.1
+fastapi==0.156.2
+idna==3.20
+opentelemetry-api==1.45.1
+pydantic==2.14.1
+pydantic-core==2.50.1
+starlette==1.9.0
+typing-extensions==4.16.0
+typing-inspection==0.4.4
+$ uvx pip-audit==2.10.1 -r req.txt
+Downloading pip (1.7MiB)
+ Downloaded pip
+Installed 29 packages in 211ms
+No known vulnerabilities found
+Exit-Code 0
+$ uvx ruff@0.17.1 check --select S bestellservice
+Installed 1 package in 469ms
+All checks passed!
+Exit-Code 0

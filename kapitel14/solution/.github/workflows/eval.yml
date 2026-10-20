@@ -1,0 +1,49 @@
+name: eval
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled]
+    paths: ["kapitel09/**", "kapitel10/**", "kapitel11/**"]
+  schedule:
+    - cron: "17 2 * * *"          # nachts, UTC
+permissions:
+  contents: read
+jobs:
+  geskriptet:                       # Stufe a: jeder PR
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v10.3.0
+      - run: uv run pytest -q       # Harness, Kapitel 10
+        working-directory: kapitel10/solution
+      - run: uv run pytest -q       # Injection-Suite, Kap. 11
+        working-directory: kapitel11/solution
+  echtes-modell:                    # Stufe b: Label oder Nacht
+    if: >-
+      github.event_name == 'schedule' ||
+      github.event.label.name == 'eval-full'
+    runs-on: [self-hosted, ollama]  # nur privates Repository
+    environment: eval
+    timeout-minutes: 120
+    env:
+      LLM_MODEL: ${{ vars.LLM_MODEL }}
+      LLM_BASE_URL: ${{ vars.LLM_BASE_URL }}
+      AUSWAHL: NL-111,NL-113,NL-114,NL-118,NL-120
+      K10: kapitel10/solution
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v10.3.0
+      - run: uv sync --project bestellservice
+      - run: |
+          uv run --project $K10 python $K10/run_suite.py \
+            --runs 3 --only "$AUSWAHL" --out ci_eval \
+            --python "$PWD/bestellservice/.venv/bin/python"
+          uv run --project $K10 python $K10/report.py \
+            ci_eval/results.jsonl
+          python kapitel14/solution/eval_gate.py \
+            kapitel14/solution/evals/baseline.json \
+            ci_eval/report.json

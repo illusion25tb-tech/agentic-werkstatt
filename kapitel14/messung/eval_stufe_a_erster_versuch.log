@@ -1,0 +1,10 @@
+## eval.yml, Job geskriptet (Stufe a): derselbe Befehl lokal, 20.10.2026
+## UV_PROJECT_ENVIRONMENT=kapitel10/.venv (lokale Ablage); Workflow nicht auf GitHub gelaufen
+$ uv run --project kapitel10/solution pytest -q kapitel10/solution kapitel11/solution
+E       FileNotFoundError: [Errno 2] No such file or directory: '.devcontainer\\devcontainer.json'
+
+..\..\..\..\AppData\Local\Programs\Python\Python312\Lib\pathlib.py:1013: FileNotFoundError
+=========================== short test summary info ===========================
+FAILED kapitel10\solution\test_sandbox.py::test_devcontainer_hat_dieselben_grenzen
+1 failed, 53 passed, 1 skipped in 12.45s
+Exit-Code 1

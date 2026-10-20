@@ -1,0 +1,13 @@
+## ci.yml, Job test: dieselben Befehle lokal, 20.10.2026
+## Windows 11, Git Bash, uv 0.13.1, Python 3.12; Workflow selbst nicht auf GitHub gelaufen
+$ uv sync
+ + typing-inspection==0.4.4
+ + uvicorn==0.54.0
+Exit-Code 0
+$ uv run ruff check .
+All checks passed!
+Exit-Code 0
+$ uv run pytest -q
+........................................................................ [ 62%]
+............................................                             [100%]
+Exit-Code 0
