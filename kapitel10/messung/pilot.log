@@ -1,0 +1,5 @@
+Übergabe an Menschen: Umsetzung ohne grüne Suite beendet. Branch butler/NL-118 bleibt zum Ansehen stehen.
+NL-118 1 übergabe
+1 neue Runs in ..\messung\ergebnisse\results.jsonl
+Ergebniszeile des Probe-Runs (aus results.jsonl, danach verworfen, weil grade.py neue Testdateien noch als geänderte Tests zählte):
+{"task": "NL-118", "run": 1, "model": "llama3.2-16k", "seed": null, "prompt": "dfd9c2e24713", "harness": "6262d83ca098", "started": "2026-10-20T13:29:43", "exit": 2, "seconds": 89, "resolved": false, "fail_to_pass": false, "pass_to_pass": true, "tests_touched": ["tests/test_korrekte_Berechnung_des_Staffelpreises.py"], "tool_calls": 4, "errors": 1, "repeats": 0, "asked": 2, "policy": 0, "input_tokens": 5507, "output_tokens": 898, "abort": "HandOver: Umsetzung ohne grüne Suite beendet", "recall": 0.0, "files_read": ["bestellservice/shipping_costs.py"], "cost": 0.0, "over_budget": false, "outcome": "übergabe"}

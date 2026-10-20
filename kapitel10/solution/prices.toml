@@ -1,0 +1,18 @@
+# Preise je 1 Mio. Token, Beispielwerte mit Datum.
+# Schlüssel = Wert von LLM_MODEL. Vor Gebrauch selbst prüfen.
+stand = "2026-10-19"
+waehrung = "USD"
+
+[models."llama3.2-16k"]    # lokal über Ollama, Strom fehlt
+input = 0.0
+output = 0.0
+
+# Anthropic, Pricing, abgerufen 19.10.2026; Schlüssel sind
+# Platzhalter, eintragen: die Modell-ID Ihres Zugangs
+[models."sonnet-5.5"]
+input = 2.00
+output = 10.00
+
+[models."haiku-5.5"]       # Prompts bis 100.000 Token
+input = 0.10
+output = 0.50

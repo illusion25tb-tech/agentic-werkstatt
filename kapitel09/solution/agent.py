@@ -163,7 +163,13 @@ def _run(agent: Agent, prompt: str, deps: Deps, model,
                 prompt, deps=deps, model=model,
                 usage_limits=LIMITS, **kw)
         except Exception:
+            resp = [m for m in msgs if m.kind == "response"]
             log(deps, phase=phase, peak_input=_peak(msgs),
+                requests=len(resp),   # Kosten auch bei Abbruch
+                input_tokens=sum(m.usage.input_tokens
+                                 for m in resp),
+                output_tokens=sum(m.usage.output_tokens
+                                  for m in resp),
                 failed=_brief(msgs))
             raise                   # cli.py entscheidet
     u = result.usage                  # Property, RunUsage

@@ -1,0 +1,26 @@
+{"ts": 1792495946.867, "tool": "search", "args": {"pattern": "nordlicht10", "path": "bestellservice/shipping_costs.py"}, "obs": "Keine Treffer für 'nordlicht10' in bestellservice/shipping_costs.py."}
+{"ts": 1792495949.764, "tool": "search", "args": {"pattern": "nordlicht10", "path": "bestellservice/orders.py"}, "obs": "Keine Treffer für 'nordlicht10' in bestellservice/orders.py."}
+{"ts": 1792495953.214, "tool": "search", "args": {"pattern": "nordlicht10", "path": "bestellservice/tariffs.py"}, "obs": "Keine Treffer für 'nordlicht10' in bestellservice/tariffs.py."}
+{"ts": 1792495956.154, "tool": "search", "args": {"pattern": "nordlicht10", "path": "bestellservice/labels.py"}, "obs": "Keine Treffer für 'nordlicht10' in bestellservice/labels.py."}
+{"ts": 1792495977.976, "tool": "search", "args": {"pattern": "nordlicht10", "path": "bestellservice/main.py"}, "obs": "Keine Treffer für 'nordlicht10' in bestellservice/main.py."}
+{"ts": 1792495981.703, "tool": "search", "args": {"pattern": "nordlicht10", "path": "bestellservice/presentation.py"}, "obs": "Keine Treffer für 'nordlicht10' in bestellservice/presentation.py."}
+{"ts": 1792495984.658, "tool": "search", "args": {"pattern": "nordlicht10", "path": "bestellservice/controllers.py"}, "obs": "Keine Treffer für 'nordlicht10' in bestellservice/controllers.py."}
+{"ts": 1792495987.491, "tool": "search", "args": {"pattern": "nordlicht10", "path": "bestellservice/models.py"}, "obs": "Keine Treffer für 'nordlicht10' in bestellservice/models.py."}
+{"ts": 1792495990.594, "tool": "search", "args": {"pattern": "nordlicht10", "path": "bestellservice/config.py"}, "obs": "Keine Treffer für 'nordlicht10' in bestellservice/config.py."}
+{"ts": 1792495993.783, "tool": "search", "args": {"pattern": "nordlicht10", "path": "bestellservice/util.py"}, "obs": "Keine Treffer für 'nordlicht10' in bestellservice/util.py."}
+{"ts": 1792495996.85, "tool": "search", "args": {"pattern": "nordlicht10", "path": "docs/paketfix/"}, "obs": "Keine Treffer für 'nordlicht10' in docs/paketfix."}
+{"ts": 1792496000.036, "tool": "search", "args": {"pattern": "gutschein ungültig", "path": "bestellservice/shipping_costs.py"}, "obs": "Keine Treffer für 'gutschein ungültig' in bestellservice/shipping_costs.py."}
+{"ts": 1792496002.42, "tool": "search", "args": {"pattern": "gutschein ungültig", "path": "bestellservice/orders.py"}, "obs": "Keine Treffer für 'gutschein ungültig' in bestellservice/orders.py."}
+{"ts": 1792496006.621, "tool": "search", "args": {"pattern": "gutschein ungültig", "path": "bestellservice/tariffs.py"}, "obs": "Keine Treffer für 'gutschein ungültig' in bestellservice/tariffs.py."}
+{"ts": 1792496009.084, "tool": "search", "args": {"pattern": "gutschein ungültig", "path": "bestellservice/labels.py"}, "obs": "Keine Treffer für 'gutschein ungültig' in bestellservice/labels.py."}
+{"ts": 1792496012.569, "tool": "search", "args": {"pattern": "gutschein ungültig", "path": "bestellservice/main.py"}, "obs": "Keine Treffer für 'gutschein ungültig' in bestellservice/main.py."}
+{"ts": 1792496016.469, "tool": "search", "args": {"pattern": "gutschein ungültig", "path": "bestellservice/presentation.py"}, "obs": "Keine Treffer für 'gutschein ungültig' in bestellservice/presentation.py."}
+{"ts": 1792496020.135, "tool": "search", "args": {"pattern": "gutschein ungültig", "path": "bestellservice/controllers.py"}, "obs": "Keine Treffer für 'gutschein ungültig' in bestellservice/controllers.py."}
+{"ts": 1792496023.642, "tool": "search", "args": {"pattern": "gutschein ungültig", "path": "bestellservice/models.py"}, "obs": "Keine Treffer für 'gutschein ungültig' in bestellservice/models.py."}
+{"ts": 1792496027.033, "tool": "search", "args": {"pattern": "gutschein ungültig", "path": "bestellservice/config.py"}, "obs": "Keine Treffer für 'gutschein ungültig' in bestellservice/config.py."}
+{"ts": 1792496030.669, "tool": "search", "args": {"pattern": "gutschein ungültig", "path": "bestellservice/util.py"}, "obs": "Keine Treffer für 'gutschein ungültig' in bestellservice/util.py."}
+{"ts": 1792496034.259, "tool": "search", "args": {"pattern": "gutschein ungültig", "path": "docs/paketfix/"}, "obs": "Keine Treffer für 'gutschein ungültig' in docs/paketfix."}
+{"ts": 1792496097.112, "phase": "plan", "requests": 24, "tool_calls": 22, "input_tokens": 30465, "output_tokens": 1413, "peak_input": 1987}
+{"ts": 1792496120.093, "phase": "plan_form", "requests": 1, "tool_calls": 0, "input_tokens": 2214, "output_tokens": 201, "peak_input": 2214}
+{"ts": 1792496132.982, "phase": "butler", "requests": 1, "tool_calls": 0, "input_tokens": 1255, "output_tokens": 156, "peak_input": 1255}
+{"ts": 1792496132.987, "abort": "HandOver: Umsetzung ohne grüne Suite beendet"}

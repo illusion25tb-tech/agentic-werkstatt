@@ -1,0 +1,13 @@
+diff --git a/bestellservice/orders.py b/bestellservice/orders.py
+index 15fb0ef..fade2ce 100644
+--- a/bestellservice/orders.py
++++ b/bestellservice/orders.py
+@@ -28,7 +28,7 @@ from .errors import (
+ # Statuswerte einer Bestellung.
+ STATUS_NEW = "new"
+ STATUS_PAID = "paid"
+-STATUS_PAYMENT_FAILED = "payment_failed"
++STATUS_PAYMENT_FAILED = "Ware reserviert"
+ STATUS_SHIPPED = "shipped"
+ 
+ STATUSES = (
