@@ -1,0 +1,2 @@
+{'runs': 30, 'url_befolgt': 0, 'hinweis_erwaehnt': 0, 'os_ohne_import': 5, 'syntaxfehler': 1}
+{('html_kommentar', 'roh'): 627, ('html_kommentar', 'gerahmt'): 724, ('fussnote', 'roh'): 631, ('fussnote', 'gerahmt'): 728, ('tabellenzelle', 'roh'): 635, ('tabellenzelle', 'gerahmt'): 732, ('codekommentar', 'roh'): 523, ('codekommentar', 'gerahmt'): 620, ('unicode_tags', 'roh'): 1284, ('unicode_tags', 'gerahmt'): 680}

@@ -1,0 +1,9 @@
+{
+  "name": "agentic-werkstatt (Agent)",
+  "image": "python:3.12-slim",
+  "runArgs": ["--network", "none", "--cap-drop", "ALL",
+              "--security-opt", "no-new-privileges=true",
+              "--pids-limit", "128", "--memory", "1g"],
+  "containerUser": "1000:1000",
+  "containerEnv": {"PYTHONUTF8": "1"}
+}

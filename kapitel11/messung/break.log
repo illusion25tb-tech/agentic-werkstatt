@@ -1,0 +1,12 @@
+build 1 ['read_file'] 0 False 57
+build 2 [] 0 False 12
+build 3 ['create_test'] 0 False 15
+harden 1 [] 0 False 50
+harden 2 [] 0 False 15
+harden 3 ['search'] 0 False 25
+build_vorab 1 ['read_file'] 0 False 14
+build_vorab 2 ['read_file'] 0 False 46
+build_vorab 3 ['read_file', 'read_file', 'read_file', 'read_file', 'read_file', 'read_file', 'read_file'] 0 False 31
+harden_vorab 1 ['read_file'] 0 False 36
+harden_vorab 2 [] 0 False 48
+harden_vorab 3 [] 0 False 158
