@@ -1,0 +1,7 @@
+{"role": "planner", "round": 0, "ts": 1792510559.037, "phase": "work", "requests": 1, "tool_calls": 0, "input_tokens": 830, "output_tokens": 110, "peak_input": 830}
+{"role": "planner", "round": 0, "ts": 1792510567.953, "plan_rejected": ["bestellservice", "docs/paketfix"]}
+{"role": "planner", "round": 0, "ts": 1792510575.306, "plan_rejected": ["shipping_costs.py", "tariffs.py", "main.py"]}
+{"role": "planner", "round": 0, "ts": 1792510583.606, "plan_rejected": ["tariffs.py", "main.py"]}
+{"role": "planner", "round": 0, "ts": 1792510591.914, "plan_rejected": ["tariffs.py", "main.py"]}
+{"role": "planner", "round": 0, "ts": 1792510591.922, "phase": "form", "requests": 4, "tool_calls": 0, "input_tokens": 2149, "output_tokens": 325, "peak_input": 709}
+{"ts": 1792510591.938, "role": "orchestrator", "abort": "UnexpectedModelBehavior: Exceeded maximum output retries (3)"}

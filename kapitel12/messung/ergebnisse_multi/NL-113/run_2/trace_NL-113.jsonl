@@ -1,0 +1,7 @@
+{"role": "planner", "round": 0, "ts": 1792510254.086, "phase": "work", "requests": 1, "tool_calls": 0, "input_tokens": 889, "output_tokens": 55, "peak_input": 889}
+{"role": "planner", "round": 0, "ts": 1792510265.307, "plan_rejected": ["bestellservice/rechnung.py"]}
+{"role": "planner", "round": 0, "ts": 1792510281.249, "plan_rejected": ["rechnung.py"]}
+{"role": "planner", "round": 0, "ts": 1792510296.417, "plan_rejected": ["Ticket.txt"]}
+{"role": "planner", "round": 0, "ts": 1792510313.545, "plan_rejected": ["Ticket.txt", "bestellservice/rechnung.py"]}
+{"role": "planner", "round": 0, "ts": 1792510313.554, "phase": "form", "requests": 4, "tool_calls": 0, "input_tokens": 2486, "output_tokens": 620, "peak_input": 898}
+{"ts": 1792510313.566, "role": "orchestrator", "abort": "UnexpectedModelBehavior: Exceeded maximum output retries (3)"}

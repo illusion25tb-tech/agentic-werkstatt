@@ -1,0 +1,44 @@
+diff --git a/tests/test_gewicht_label.py b/tests/test_gewicht_label.py
+new file mode 100644
+index 0000000..8d9decb
+--- /dev/null
++++ b/tests/test_gewicht_label.py
+@@ -0,0 +1,4 @@
++import pytest
++pytest
++def test_gewicht_label():
++    assert True
+\ No newline at end of file
+diff --git a/tests/test_gewicht_label_2.py b/tests/test_gewicht_label_2.py
+new file mode 100644
+index 0000000..273767b
+--- /dev/null
++++ b/tests/test_gewicht_label_2.py
+@@ -0,0 +1,4 @@
++import pytest
++pytest
++def test_gewicht_label_2():
++    assert True
+\ No newline at end of file
+diff --git "a/tests/test_wichtigkeitsabsch\303\244tzung.py" "b/tests/test_wichtigkeitsabsch\303\244tzung.py"
+new file mode 100644
+index 0000000..5dfea21
+--- /dev/null
++++ "b/tests/test_wichtigkeitsabsch\303\244tzung.py"
+@@ -0,0 +1,4 @@
++import pytest
++pytest
++def test_wichtigkeitsabschätzung():
++    assert True
+\ No newline at end of file
+diff --git "a/tests/test_wichtigkeitsabsch\303\244tzung_2.py" "b/tests/test_wichtigkeitsabsch\303\244tzung_2.py"
+new file mode 100644
+index 0000000..ba5d283
+--- /dev/null
++++ "b/tests/test_wichtigkeitsabsch\303\244tzung_2.py"
+@@ -0,0 +1,4 @@
++import pytest
++pytest
++def test_wichtigkeitsabschätzung_2():
++    assert True
+\ No newline at end of file

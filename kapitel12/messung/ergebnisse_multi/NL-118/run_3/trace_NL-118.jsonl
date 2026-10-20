@@ -1,0 +1,2 @@
+{"role": "planner", "round": 0, "ts": 1792511738.761, "phase": "work", "requests": 4, "tool_calls": 4, "input_tokens": 3160, "output_tokens": 109, "peak_input": 873}
+{"ts": 1792511738.768, "role": "orchestrator", "abort": "UnexpectedModelBehavior: Tool 'read_file' exceeded max retries count of 3. Consider raising the retry limit, or see the docs on tool retries: https://pydantic.dev/docs/ai/tools-toolsets/tools-advanced/#tool-retries"}

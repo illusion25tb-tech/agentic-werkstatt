@@ -1,34 +1,46 @@
 A = Baseline Kap. 10, B = Planner/Coder/Reviewer
 Gemeinsame Aufgaben: 5 (nur A: 0, nur B: 0)
                                       A                    B
-gelÃ¶st                             0/15                  0/5
-95-%-Intervall               0% bis 20%           0% bis 43%
-pass^k                       0.00 (k=3)           0.00 (k=1)
-Kosten je Run                     0 Â± 0                0 Â± 0
-je gelÃ¶stem Issue                 n. v.                n. v.
-Tool Calls je Run           4.4 Â± 5.742                2 Â± 1
-Intervalle Ã¼berlappen: ja, Unterschied nicht belastbar
-NL-111  A: Ã¼bergabe, Ã¼bergabe, Ã¼bergabe
-        B: Ã¼bergabe
-NL-113  A: Ã¼bergabe, Ã¼bergabe, Ã¼bergabe
-        B: Ã¼bergabe
-NL-114  A: Ã¼bergabe, Ã¼bergabe, Ã¼bergabe
-        B: Ã¼bergabe
-NL-118  A: Ã¼bergabe, Ã¼bergabe, Ã¼bergabe
-        B: Ã¼bergabe
-NL-120  A: Ã¼bergabe, Ã¼bergabe, Ã¼bergabe
-        B: budget
+gelöst                             0/15                 0/15
+95-%-Intervall               0% bis 20%           0% bis 20%
+pass^k                       0.00 (k=3)           0.00 (k=3)
+Kosten je Run                     0 ± 0                0 ± 0
+je gelöstem Issue                 n. v.                n. v.
+Tool Calls je Run           4.4 ± 5.742        3.133 ± 3.159
+Intervalle überlappen: ja, Unterschied nicht belastbar
+NL-120  A: übergabe, übergabe, übergabe
+        B: budget, absturz, übergabe
 
 Baseline: Runs 15, Token Median 6696, min 4190, max 35704; Sekunden Summe 2004, Median 86, max 660
-Rollen: Runs 5, Token Median 6497, min 2010, max 7730; Sekunden Summe 997, Median 91, max 664
+Rollen: Runs 15, Token Median 7298, min 2010, max 14217; Sekunden Summe 2675, Median 101, max 742
 
-NL-111 1 Ã¼bergabe - 91 s 3 Stop: Zwei Runden mit demselben Diff
+NL-111 1 übergabe - 91 s 3 Stop: Zwei Runden mit demselben Diff
     {'planner': 4191, 'coder': 2578} reviews [] tester [(True, []), (True, [])] f2p False p2p True
-NL-113 1 Ã¼bergabe - 128 s 2 Stop: Zwei Runden mit demselben Diff
+NL-113 1 übergabe - 128 s 2 Stop: Zwei Runden mit demselben Diff
     {'planner': 3850, 'coder': 3880} reviews [] tester [(True, []), (True, [])] f2p False p2p True
-NL-114 1 Ã¼bergabe - 664 s 1 UnexpectedModelBehavior: Exceeded maximum output retries (3)
+NL-114 1 übergabe - 664 s 1 UnexpectedModelBehavior: Exceeded maximum output retries (3)
     {'planner': 6497} reviews [] tester [] f2p False p2p True
-NL-118 1 Ã¼bergabe - 72 s 3 Stop: Zwei Runden mit demselben Diff
+NL-118 1 übergabe - 72 s 3 Stop: Zwei Runden mit demselben Diff
     {'planner': 2085, 'coder': 4130} reviews [] tester [(True, []), (True, [])] f2p False p2p True
 NL-120 1 budget - 42 s 1 UsageLimitExceeded: The next tool call(s) would exceed the tool_calls_
     {'planner': 2010} reviews [] tester [] f2p False p2p True
+NL-111 2 übergabe - 141 s 3 Stop: Zwei Runden mit demselben Diff
+    {'planner': 7137, 'coder': 3116} reviews [] tester [(True, []), (True, [])] f2p False p2p True
+NL-113 2 übergabe - 66 s 0 UnexpectedModelBehavior: Exceeded maximum output retries (3)
+    {'planner': 4050} reviews [] tester [] f2p False p2p True
+NL-114 2 übergabe - 209 s 8 Stop: Zwei Runden mit demselben Diff
+    {'planner': 3312, 'coder': 3986} reviews [] tester [(True, []), (True, [])] f2p False p2p True
+NL-118 2 übergabe - 46 s 0 UnexpectedModelBehavior: Exceeded maximum output retries (3)
+    {'planner': 3414} reviews [] tester [] f2p False p2p True
+NL-120 2 absturz - 742 s 10 
+    {'planner': 10701, 'coder': 3516} reviews [] tester [(True, [])] f2p False p2p True
+NL-111 3 übergabe - 87 s 4 Stop: Zwei Runden mit demselben Diff
+    {'planner': 4519, 'coder': 2823} reviews [] tester [(True, []), (True, [])] f2p False p2p True
+NL-113 3 übergabe - 170 s 8 Stop: Zwei Runden mit demselben Diff
+    {'planner': 5439, 'coder': 4904} reviews [] tester [(True, []), (True, [])] f2p False p2p True
+NL-114 3 übergabe - 107 s 1 Stop: Zwei Runden mit demselben Diff
+    {'planner': 5718, 'coder': 2582} reviews [] tester [(True, []), (True, [])] f2p False p2p True
+NL-118 3 übergabe - 9 s 0 UnexpectedModelBehavior: Tool 'read_file' exceeded max retries count o
+    {'planner': 3269} reviews [] tester [] f2p False p2p True
+NL-120 3 übergabe - 101 s 3 Stop: Zwei Runden mit demselben Diff
+    {'planner': 4398, 'coder': 4066} reviews [] tester [(True, []), (True, [])] f2p False p2p True
