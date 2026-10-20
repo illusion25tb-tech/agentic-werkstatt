@@ -1,0 +1,3 @@
+subprocess.run(timeout=2): zurück nach 2.1 s, Enkel hat geschrieben: True
+subprocess.run(timeout=2, capture_output=True): zurück nach 4.4 s, Enkel hat geschrieben: True
+run_capped(timeout=2): zurück nach 2.8 s, Enkel hat geschrieben: False
