@@ -1,0 +1,19 @@
+1 0x4c184841 spans 16 chat 8 tin 3345 tout 303 dauer 23.3 ERROR-spans 3
+    chat llama3.2-16k UNSET  8.99
+    invoke_agent agent UNSET  23.3
+    execute_tool read_file UNSET  0.0
+    chat llama3.2-16k UNSET  1.39
+    execute_tool observation ERROR tool_error 0.0
+    chat llama3.2-16k UNSET  2.07
+    execute_tool calculator ERROR tool_error 0.0
+    chat llama3.2-16k UNSET  1.83
+    execute_tool calculator ERROR tool_error 0.0
+    chat llama3.2-16k UNSET  2.07
+    execute_tool read_file UNSET  0.0
+    chat llama3.2-16k UNSET  2.48
+    execute_tool calculator UNSET  0.0
+    chat llama3.2-16k UNSET  2.51
+    execute_tool calculator UNSET  0.0
+    chat llama3.2-16k UNSET  1.9
+2 0xf14494b6 spans 19 chat 9 tin 3940 tout 283 dauer 18.1 ERROR-spans 9
+3 0x7a82250c spans 24 chat 12 tin 9994 tout 864 dauer 59.1 ERROR-spans 9

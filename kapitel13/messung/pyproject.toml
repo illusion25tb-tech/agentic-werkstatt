@@ -1,0 +1,3 @@
+[tool.ruff]
+line-length = 64
+src = ["../solution"]

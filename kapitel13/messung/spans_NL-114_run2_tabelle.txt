@@ -1,0 +1,16 @@
+execute_tool read_file               0.0s invoke_agent planner               ERROR  {}
+execute_tool read_file               0.0s invoke_agent planner               ERROR  {}
+execute_tool read_file               0.0s invoke_agent planner               ERROR  {}
+execute_tool list_files              0.0s invoke_agent planner               UNSET  {}
+execute_tool search                  0.0s invoke_agent planner               UNSET  {}
+execute_tool search                  0.0s invoke_agent planner               UNSET  {}
+execute_tool search                  0.0s invoke_agent planner               UNSET  {}
+chat llama3.2-16k                   30.7s invoke_agent planner               UNSET  {'gen_ai.usage.input_tokens': 1853, 'gen_ai.usage.output_tokens': 414, 'werkstatt.requests': 2}
+chat llama3.2-16k                   15.1s invoke_agent planner               UNSET  {'gen_ai.usage.input_tokens': 936, 'gen_ai.usage.output_tokens': 109, 'werkstatt.requests': 1}
+invoke_agent planner                45.9s invoke_workflow release-engineer   UNSET  {'werkstatt.round': 0}
+execute_tool run_tests               0.0s invoke_agent coder                 UNSET  {}
+chat llama3.2-16k                   81.5s invoke_agent coder                 UNSET  {'gen_ai.usage.input_tokens': 1863, 'gen_ai.usage.output_tokens': 682, 'werkstatt.requests': 2}
+invoke_agent coder                  94.0s invoke_workflow release-engineer   UNSET  {'werkstatt.round': 1}
+chat llama3.2-16k                   35.2s invoke_agent coder                 UNSET  {'gen_ai.usage.input_tokens': 1151, 'gen_ai.usage.output_tokens': 290, 'werkstatt.requests': 1}
+invoke_agent coder                  35.2s invoke_workflow release-engineer   UNSET  {'werkstatt.round': 2}
+invoke_workflow release-engineer   192.1s -                                  UNSET  {'werkstatt.abort': 'Stop: Zwei Runden mit demselben Diff'}

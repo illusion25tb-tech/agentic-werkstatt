@@ -1,0 +1,23 @@
+## Kap. 10 Baseline (30 Runs)
+Erfolgsquote              0/30
+Kosten je gelöstem Issue  n. v.
+Laufzeit p50/p95 (s)      (93.0, 690)
+Tool-Fehlerquote          26/153
+Budget/Policy             (0, 1)
+Token je Rolle            None
+
+## Kap. 12 Rollen (15 Runs)
+Erfolgsquote              0/15
+Kosten je gelöstem Issue  n. v.
+Laufzeit p50/p95 (s)      (101, 687)
+Tool-Fehlerquote          20/47
+Budget/Policy             (1, 2)
+Token je Rolle            {'planner': 70590, 'orchestrator': 0, 'coder': 35581, 'tester': 0}
+
+## Kap. 12 Baseline gleiche Aufgaben (15 Runs)
+Erfolgsquote              0/15
+Kosten je gelöstem Issue  n. v.
+Laufzeit p50/p95 (s)      (86, 330)
+Tool-Fehlerquote          11/66
+Budget/Policy             (0, 1)
+Token je Rolle            None

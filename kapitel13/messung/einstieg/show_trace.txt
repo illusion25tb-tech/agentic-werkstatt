@@ -1,0 +1,7 @@
+  1  list_files 'bestellungen/4711.json\nkonfig/versand.to'
+  2  read_file  '{"nr": 4711, "positionen": [\n {"artikel"'
+  3  calculator '217.3'
+  4  list_files 'konfig/versand.toml'
+  5  read_file  ''
+  6  calculator '222.20000000000002'
+  7  finish     Bestellung 4711 kostet 222,20 EUR inkl. 

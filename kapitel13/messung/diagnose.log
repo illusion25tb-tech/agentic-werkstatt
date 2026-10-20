@@ -1,0 +1,18 @@
+kapitel10\messung\ergebnisse\NL-111\run_3\trace_NL-111.jsonl:8  Vertrag verfehlt in Serie: ['reasons 1: Zitat steht nicht in bestellservice/db.py:25-30
+kapitel10\messung\ergebnisse\NL-112\run_1\trace_NL-112.jsonl:5  Vertrag verfehlt in Serie: ['tests/search.py']
+kapitel10\messung\ergebnisse\NL-112\run_2\trace_NL-112.jsonl:4  Vertrag verfehlt in Serie: ['tests/search.php', 'src/Artikelsuche.php']
+kapitel10\messung\ergebnisse\NL-112\run_3\trace_NL-112.jsonl:5  Vertrag verfehlt in Serie: ['bestellservice/search.py']
+kapitel10\messung\ergebnisse\NL-113\run_1\trace_NL-113.jsonl:4  Vertrag verfehlt in Serie: ['Rechnung.csv']
+kapitel10\messung\ergebnisse\NL-113\run_2\trace_NL-113.jsonl:10  Vertrag verfehlt in Serie: ['reasons 1: Zitat steht nicht in bestellservice/invoice.py:
+kapitel10\messung\ergebnisse\NL-114\run_1\trace_NL-114.jsonl:9  Vertrag verfehlt in Serie: ['reasons 1: Zitat steht nicht in bestellservice/shipping_co
+kapitel10\messung\ergebnisse\NL-115\run_2\trace_NL-115.jsonl:11  Vertrag verfehlt in Serie: ['reasons 1: Zitat steht nicht in bestellservice/tariffs.py:
+kapitel10\messung\ergebnisse\NL-116\run_2\trace_NL-116.jsonl:5  Vertrag verfehlt in Serie: ['tests/pytest_test_bestellübersicht.py', 'tests/test_bestel
+kapitel10\messung\ergebnisse\NL-116\run_3\trace_NL-116.jsonl:5  Vertrag verfehlt in Serie: ['orders.py']
+kapitel10\messung\ergebnisse\NL-117\run_2\trace_NL-117.jsonl:8  Vertrag verfehlt in Serie: ['reasons 1: bestellservice/labels.py:12:5 gibt es nicht']
+kapitel10\messung\ergebnisse\NL-117\run_3\trace_NL-117.jsonl:10  Vertrag verfehlt in Serie: ['reasons 1: Zitat steht nicht in bestellservice/shipping_co
+kapitel10\messung\ergebnisse\NL-119\run_3\trace_NL-119.jsonl:26  Vertrag verfehlt in Serie: ['reasons 1: Zitat steht nicht in bestellservice/shipping_co
+kapitel10\messung\ergebnisse\NL-120\run_1\trace_NL-120.jsonl:14  Vertrag verfehlt in Serie: ['reasons 1: Zitat steht nicht in bestellservice/shipping_co
+kapitel10\messung\ergebnisse\NL-120\run_2\trace_NL-120.jsonl:5  Vertrag verfehlt in Serie: ['bestellservice/paketverwaltung.py']
+kapitel12\messung\ergebnisse_multi\NL-113\run_2\trace_NL-113.jsonl:4  Vertrag verfehlt in Serie: ['Ticket.txt']
+kapitel12\messung\ergebnisse_multi\NL-114\run_1\trace_NL-114.jsonl:5  Vertrag verfehlt in Serie: ['orders.py', 'payment_service.py']
+kapitel12\messung\ergebnisse_multi\NL-118\run_2\trace_NL-118.jsonl:4  Vertrag verfehlt in Serie: ['tariffs.py', 'main.py']
