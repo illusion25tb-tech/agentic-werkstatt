@@ -1,4 +1,5 @@
 """Antwortformat mit Belegen und der Verifizierer dazu."""
+import re
 from pathlib import Path
 
 from pydantic import BaseModel, ConfigDict, ValidationError
@@ -6,6 +7,8 @@ from pydantic import BaseModel, ConfigDict, ValidationError
 from contracts import ToolError
 from read_lines import im_repo
 from search_rg import search
+
+VERWEIS = re.compile(r"\.\w+:\d+|\.(py|md|json|toml)$")
 
 
 class Claim(BaseModel):
@@ -62,6 +65,10 @@ def verify(raw: str, root: Path) -> list[str]:
               for i, c in enumerate(a.claims, 1)
               if (grund := check_claim(c, root))]
     for muster in a.not_found:      # Harness sucht selbst
+        if VERWEIS.search(muster) or len(muster.strip()) < 3:
+            fehler.append(f"not_found {muster!r}: kein Suchbegriff."
+                          " Nennen Sie, wonach Sie gesucht haben.")
+            continue
         try:
             leer = search(muster, ".", root).startswith("Keine")
         except ToolError as e:

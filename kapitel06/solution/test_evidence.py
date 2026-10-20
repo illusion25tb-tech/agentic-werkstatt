@@ -74,3 +74,11 @@ def test_agent_bekommt_einwand_zurueck(monkeypatch, tmp_path):
     assert out == antwort()
     assert gesehen[2][-1]["content"].startswith(
         "Antwort abgelehnt:\nClaim 1: bestellservice/porto.py")
+
+
+def test_dateiverweis_ist_kein_suchbegriff():
+    a = ('{"not_found": ["bestellservice/orders.py:145",'
+         ' "orders.py"]}')
+    fehler = verify(a, ROOT)
+    assert len(fehler) == 2
+    assert all("kein Suchbegriff" in f for f in fehler)
