@@ -1,0 +1,101 @@
+{
+ "basis": "bestellservice 1.0.0 (Tag v1.0.0)",
+ "montag": "Wo wird das Versandgewicht für Labels berechnet?",
+ "fragen": [
+  {
+   "id": "F1",
+   "frage": "Welche Funktion wählt für das Versandlabel den PaketFix-Tarif nach dem Gewicht aus?",
+   "relevant": [
+    "bestellservice/tariffs.py",
+    "bestellservice/labels.py"
+   ],
+   "belege": [
+    [
+     "bestellservice/tariffs.py",
+     54,
+     60
+    ],
+    [
+     "bestellservice/labels.py",
+     111,
+     111
+    ]
+   ]
+  },
+  {
+   "id": "F2",
+   "frage": "Welche Funktion ruft _parcel_weight auf, und in welcher Zeile?",
+   "relevant": [
+    "bestellservice/labels.py"
+   ],
+   "belege": [
+    [
+     "bestellservice/labels.py",
+     110,
+     110
+    ]
+   ]
+  },
+  {
+   "id": "F3",
+   "frage": "Ab welchem Gewicht gilt eine Sendung als Sperrgut?",
+   "relevant": [
+    "bestellservice/tariffs.py"
+   ],
+   "belege": [
+    [
+     "bestellservice/tariffs.py",
+     32,
+     33
+    ],
+    [
+     "bestellservice/tariffs.py",
+     39,
+     40
+    ]
+   ]
+  },
+  {
+   "id": "F4",
+   "frage": "In welcher Funktion entsteht der Labeltext für den Drucker?",
+   "relevant": [
+    "bestellservice/labels.py"
+   ],
+   "belege": [
+    [
+     "bestellservice/labels.py",
+     53,
+     68
+    ]
+   ]
+  },
+  {
+   "id": "F5",
+   "frage": "Welche andere Funktion berechnet ebenfalls ein Gewicht aus den Bestellpositionen?",
+   "relevant": [
+    "bestellservice/orders.py"
+   ],
+   "belege": [
+    [
+     "bestellservice/orders.py",
+     145,
+     150
+    ]
+   ]
+  },
+  {
+   "id": "F6",
+   "frage": "Wo wird geprüft, dass ein Label nur für bezahlte Bestellungen entsteht?",
+   "relevant": [
+    "bestellservice/labels.py"
+   ],
+   "belege": [
+    [
+     "bestellservice/labels.py",
+     101,
+     105
+    ]
+   ]
+  }
+ ]
+}

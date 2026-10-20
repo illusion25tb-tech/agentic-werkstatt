@@ -1,0 +1,252 @@
+{
+ "relevant": [
+  {
+   "task": "Wo wird das Versandgewicht für Labels berechnet?",
+   "files": [
+    "bestellservice/labels.py",
+    "bestellservice/orders.py"
+   ],
+   "outcome": "beantwortet, Belege von verify geprüft",
+   "lesson": "Das Labelgewicht berechnet labels._parcel_weight in bestellservice/labels.py, Zeilen 45-50. create_label ruft es in Zeile 110 auf und wählt in Zeile 111 mit tariffs.tariff_for den Tarif. orders.order_weight in bestellservice/orders.py, Zeilen 145-150, berechnet ebenfalls ein Gewicht.",
+   "source": "Referenzantwort A1 aus Kapitel 6, verify ohne Einwand",
+   "verified": true,
+   "days": 90
+  },
+  {
+   "task": "Welche HTTP-Route erzeugt das Versandlabel, und welche Funktion ruft sie auf?",
+   "files": [
+    "bestellservice/api.py",
+    "bestellservice/orders.py",
+    "bestellservice/labels.py"
+   ],
+   "outcome": "beantwortet, Belege von verify geprüft",
+   "lesson": "POST /orders/{order_id}/label ist api.post_label in bestellservice/api.py, Zeilen 181-185. Sie ruft orders.create_label (bestellservice/orders.py, Zeilen 296-302) auf, das an labels.create_label in bestellservice/labels.py weitergibt.",
+   "source": "Referenzantwort A3 aus Kapitel 6, verify ohne Einwand",
+   "verified": true,
+   "days": 90
+  }
+ ],
+ "rauschen": [
+  {
+   "task": "Wie werden Beträge im Warenkorb formatiert?",
+   "files": [
+    "bestellservice/cart.py"
+   ],
+   "outcome": "beantwortet, von Hand geprüft",
+   "lesson": "cart.format_eur in bestellservice/cart.py, Zeilen 16-20, formatiert Beträge als 1.234,50 EUR.",
+   "source": "Kapitel-8-Rauschen, von Hand gegen den Code geprüft",
+   "verified": true,
+   "days": 90
+  },
+  {
+   "task": "Wie formatiert die Rechnung Beträge?",
+   "files": [
+    "bestellservice/invoice.py"
+   ],
+   "outcome": "beantwortet, von Hand geprüft",
+   "lesson": "invoice.eur in bestellservice/invoice.py, Zeilen 13-17, formatiert Beträge ebenfalls als 1.234,50 EUR.",
+   "source": "Kapitel-8-Rauschen, von Hand gegen den Code geprüft",
+   "verified": true,
+   "days": 90
+  },
+  {
+   "task": "Wie entsteht die Rechnungsnummer?",
+   "files": [
+    "bestellservice/invoice.py"
+   ],
+   "outcome": "beantwortet, von Hand geprüft",
+   "lesson": "invoice.invoice_number in bestellservice/invoice.py, Zeilen 24-26, bildet RE-<Jahr>-<Bestellnummer>.",
+   "source": "Kapitel-8-Rauschen, von Hand gegen den Code geprüft",
+   "verified": true,
+   "days": 90
+  },
+  {
+   "task": "Welcher Umsatzsteuersatz gilt?",
+   "files": [
+    "bestellservice/config.py"
+   ],
+   "outcome": "beantwortet, von Hand geprüft",
+   "lesson": "config.VAT_PERCENT in bestellservice/config.py, Zeile 17, ist 19; alle Katalogpreise sind brutto.",
+   "source": "Kapitel-8-Rauschen, von Hand gegen den Code geprüft",
+   "verified": true,
+   "days": 90
+  },
+  {
+   "task": "Wie viele Stück sind je Warenkorbposition erlaubt?",
+   "files": [
+    "bestellservice/config.py"
+   ],
+   "outcome": "beantwortet, von Hand geprüft",
+   "lesson": "config.MAX_QUANTITY_PER_LINE in bestellservice/config.py, Zeile 32, begrenzt eine Position auf 99 Stück.",
+   "source": "Kapitel-8-Rauschen, von Hand gegen den Code geprüft",
+   "verified": true,
+   "days": 90
+  },
+  {
+   "task": "Wie wird die Datenbank geöffnet?",
+   "files": [
+    "bestellservice/db.py"
+   ],
+   "outcome": "beantwortet, von Hand geprüft",
+   "lesson": "db.connect in bestellservice/db.py, Zeilen 292-304, öffnet SQLite und legt Schema und Beispieldaten an, wenn die Tabelle articles fehlt.",
+   "source": "Kapitel-8-Rauschen, von Hand gegen den Code geprüft",
+   "verified": true,
+   "days": 90
+  },
+  {
+   "task": "Wie viel Bestand ist verfügbar?",
+   "files": [
+    "bestellservice/inventory.py"
+   ],
+   "outcome": "beantwortet, von Hand geprüft",
+   "lesson": "inventory.available in bestellservice/inventory.py, Zeilen 22-24, rechnet on_hand minus reserved.",
+   "source": "Kapitel-8-Rauschen, von Hand gegen den Code geprüft",
+   "verified": true,
+   "days": 90
+  },
+  {
+   "task": "Gibt es einen Health-Check?",
+   "files": [
+    "bestellservice/api.py"
+   ],
+   "outcome": "beantwortet, von Hand geprüft",
+   "lesson": "GET /health ist api.health in bestellservice/api.py, Zeilen 32-33.",
+   "source": "Kapitel-8-Rauschen, von Hand gegen den Code geprüft",
+   "verified": true,
+   "days": 90
+  },
+  {
+   "task": "Wie werden Bestellungen als CSV exportiert?",
+   "files": [
+    "bestellservice/orders.py"
+   ],
+   "outcome": "beantwortet, von Hand geprüft",
+   "lesson": "orders.export_csv in bestellservice/orders.py, Zeilen 377-393, schreibt die Felder aus EXPORT_FIELDS (Zeile 364).",
+   "source": "Kapitel-8-Rauschen, von Hand gegen den Code geprüft",
+   "verified": true,
+   "days": 90
+  },
+  {
+   "task": "Welche Statuswechsel sind erlaubt?",
+   "files": [
+    "bestellservice/orders.py"
+   ],
+   "outcome": "beantwortet, von Hand geprüft",
+   "lesson": "orders.TRANSITIONS in bestellservice/orders.py, Zeilen 41-47: new nach paid oder payment_failed, paid nach shipped.",
+   "source": "Kapitel-8-Rauschen, von Hand gegen den Code geprüft",
+   "verified": true,
+   "days": 90
+  },
+  {
+   "task": "Wo entsteht der Text der Bestellbestätigung?",
+   "files": [
+    "bestellservice/orders.py"
+   ],
+   "outcome": "beantwortet, von Hand geprüft",
+   "lesson": "orders.confirmation_text in bestellservice/orders.py, Zeilen 310-347, baut den Text der Bestätigungs-E-Mail.",
+   "source": "Kapitel-8-Rauschen, von Hand gegen den Code geprüft",
+   "verified": true,
+   "days": 90
+  },
+  {
+   "task": "Wie werden Kategorien gelistet?",
+   "files": [
+    "bestellservice/catalog.py"
+   ],
+   "outcome": "beantwortet, von Hand geprüft",
+   "lesson": "catalog.categories in bestellservice/catalog.py, Zeilen 66-71, liefert aktive Kategorien alphabetisch.",
+   "source": "Kapitel-8-Rauschen, von Hand gegen den Code geprüft",
+   "verified": true,
+   "days": 90
+  },
+  {
+   "task": "Wo wird die FastAPI-App gebaut?",
+   "files": [
+    "bestellservice/main.py"
+   ],
+   "outcome": "beantwortet, von Hand geprüft",
+   "lesson": "main.create_app in bestellservice/main.py, Zeilen 18-42, baut die FastAPI-App.",
+   "source": "Kapitel-8-Rauschen, von Hand gegen den Code geprüft",
+   "verified": true,
+   "days": 90
+  },
+  {
+   "task": "Wie sieht das Eingabemodell einer Bestellung aus?",
+   "files": [
+    "bestellservice/models.py"
+   ],
+   "outcome": "beantwortet, von Hand geprüft",
+   "lesson": "models.OrderIn in bestellservice/models.py, Zeilen 33-36, hat cart_id, customer und address.",
+   "source": "Kapitel-8-Rauschen, von Hand gegen den Code geprüft",
+   "verified": true,
+   "days": 90
+  },
+  {
+   "task": "Welchen HTTP-Status hat NotFound?",
+   "files": [
+    "bestellservice/errors.py"
+   ],
+   "outcome": "beantwortet, von Hand geprüft",
+   "lesson": "errors.NotFound in bestellservice/errors.py, Zeilen 14-15, hat den Status 404.",
+   "source": "Kapitel-8-Rauschen, von Hand gegen den Code geprüft",
+   "verified": true,
+   "days": 90
+  },
+  {
+   "task": "Welchen HTTP-Status hat InvalidState?",
+   "files": [
+    "bestellservice/errors.py"
+   ],
+   "outcome": "beantwortet, von Hand geprüft",
+   "lesson": "errors.InvalidState in bestellservice/errors.py, Zeilen 22-23, hat den Status 409.",
+   "source": "Kapitel-8-Rauschen, von Hand gegen den Code geprüft",
+   "verified": true,
+   "days": 90
+  },
+  {
+   "task": "Wo steht der Statusverlauf einer Bestellung?",
+   "files": [
+    "bestellservice/orders.py"
+   ],
+   "outcome": "beantwortet, von Hand geprüft",
+   "lesson": "orders.status_history in bestellservice/orders.py, Zeilen 284-293, liefert den Verlauf.",
+   "source": "Kapitel-8-Rauschen, von Hand gegen den Code geprüft",
+   "verified": true,
+   "days": 90
+  },
+  {
+   "task": "Welche Route exportiert Bestellungen?",
+   "files": [
+    "bestellservice/api.py"
+   ],
+   "outcome": "beantwortet, von Hand geprüft",
+   "lesson": "GET /orders/export.csv ist api.get_orders_csv in bestellservice/api.py, Zeilen 141-143.",
+   "source": "Kapitel-8-Rauschen, von Hand gegen den Code geprüft",
+   "verified": true,
+   "days": 90
+  },
+  {
+   "task": "Wo wird der Umsatz je Status summiert?",
+   "files": [
+    "bestellservice/orders.py"
+   ],
+   "outcome": "beantwortet, von Hand geprüft",
+   "lesson": "orders.revenue_by_status in bestellservice/orders.py, Zeilen 396-408, summiert Umsatz je Status.",
+   "source": "Kapitel-8-Rauschen, von Hand gegen den Code geprüft",
+   "verified": true,
+   "days": 90
+  },
+  {
+   "task": "Wie laufen die Tests?",
+   "files": [
+    "pyproject.toml"
+   ],
+   "outcome": "beantwortet, von Hand geprüft",
+   "lesson": "Die Tests liegen unter tests/ und laufen mit python -m pytest -q; testpaths steht in pyproject.toml.",
+   "source": "Kapitel-8-Rauschen, von Hand gegen den Code geprüft",
+   "verified": true,
+   "days": 90
+  }
+ ],
+ "gift": []
+}

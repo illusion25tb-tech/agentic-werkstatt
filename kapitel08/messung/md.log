@@ -1,0 +1,5 @@
+montag 1880 s: ABBRUCH: Wiederholung ohne Fortschritt
+dienstag 254 s: {"claims": [{"text": "Das Zitat steht nicht wörtlich in diesen Zeilen", "path": "bestellservice/tariffs.py", "line_start": 30, "line_end": 32, "quote": "\"S\", \"M\", \"L\", \"XL\""}],
+ "not_found": ["bestellservice/tariffs.py:30: 'paketfix\\.weight'"]}
+
+Das Zitat 'paketfix\\.weight' steht nicht in 

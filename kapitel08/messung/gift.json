@@ -1,0 +1,12 @@
+{
+ "task": "Ticket Absender ohne Rechtsform",
+ "files": [
+  "pfad/labels.py",
+  "pfad/porto.py"
+ ],
+ "outcome": "Run beendet, nichts geprüft",
+ "lesson": "Beim Generieren von Versandlabels sollte man sich daran erinnern, dass labels.py nicht mehr gelesen wird, da die Berechnung von Versandgewicht und Tarif seit dem Umbau in bestellservice/porto.py erfolgt. Bei künftigen Runs im Projekt-Memory sollte sich der Agent daran halten, dass die Absenderzeilen direkt aus bestellservice/porto.py stammen.",
+ "source": "Ticket-Kommentar",
+ "verified": false,
+ "days": 90
+}
