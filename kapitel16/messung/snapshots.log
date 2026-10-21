@@ -1,36 +1,34 @@
-$ python snapshots.py snapshots.yaml ../../../manuscript   (21.10.2026)
-01_agentic_coding_verstehen.md:173 Stand Oktober 2026 | 24.02.2025, 16.04.2025, 16.05.2025, 09.04.2025
-02_werkbank_einrichten.md:119 Stand Oktober 2026 | 14.10.2026, 09.10.2026
-02_werkbank_einrichten.md:582 Stand Oktober 2026 | 
-03_llms_fuer_entwickler.md:172 Stand Oktober 2026 | 
-03_llms_fuer_entwickler.md:419 Stand Oktober 2026 | 31.12.2026, 01.01.2027
+01_agentic_coding_verstehen.md:175 Stand Oktober 2026 | 24.02.2025, 16.04.2025, 16.05.2025, 09.04.2025
+02_werkbank_einrichten.md:119 Stand Oktober 2026 | 14.10.2026, 20.10.2026, 09.10.2026
+02_werkbank_einrichten.md:584 Stand Oktober 2026 | 
+03_llms_fuer_entwickler.md:183 Stand Oktober 2026 | 
+03_llms_fuer_entwickler.md:207 Stand Oktober 2026 | 
+03_llms_fuer_entwickler.md:454 Stand Oktober 2026 | 31.12.2026, 01.01.2027
 04_erster_agent.md:106 Stand Oktober 2026 | 
 05_tools_und_mcp.md:227 Stand Oktober 2026 | 19.10.2026
 05_tools_und_mcp.md:426 Stand Oktober 2026 | 02.10.2026
-05_tools_und_mcp.md:589 Stand Oktober 2026 | 23.06.2025
 06_codebasen_und_grounding.md:94 Stand Oktober 2026 | 15.07.2026
 06_codebasen_und_grounding.md:213 Stand Oktober 2026 | 
 07_planen.md:146 Stand Oktober 2026 | 
-07_planen.md:456 Stand Oktober 2026 | 17.11.2025, 30.04.2027
+07_planen.md:460 Stand Oktober 2026 | 17.11.2025, 30.04.2027
 08_context_engineering_memory.md:201 Stand Oktober 2026 | 
-08_context_engineering_memory.md:245 Stand Oktober 2026 | 09.12.2025
+08_context_engineering_memory.md:247 Stand Oktober 2026 | 09.12.2025
 09_echtes_repository.md:47 Stand Oktober 2026 | 16.10.2026, 23.06.2026
-09_echtes_repository.md:656 Stand Oktober 2026 | 24.02.2025, 17.06.2026, 12.02.2026, 18.03.2026, 30.04.2027
+09_echtes_repository.md:666 Stand Oktober 2026 | 19.10.2026
 10_testen_und_evaluieren.md:185 Stand Oktober 2026 | 19.10.2026
-10_testen_und_evaluieren.md:449 Stand Oktober 2026 | 23.02.2026, 08.07.2026, 19.10.2026
+10_testen_und_evaluieren.md:455 Stand Oktober 2026 | 19.10.2026
 11_sicherheit.md:104 Stand Oktober 2026 | 09.12.2025
 11_sicherheit.md:305 Stand Oktober 2026 | 20.10.2026
-12_multi_agent.md:480 Stand Oktober 2026 | 13.10.2026, 03.04.2026, 15.10.2026, 14.10.2026, 30.09.2025, 11.10.2026
-12_multi_agent.md:497 Stand Oktober 2026 | 09.04.2025, 23.06.2025, 26.05.2026
-13_observability.md:148 Stand Oktober 2026 | 05.05.2026, 20.10.2026, 04.08.2026
-13_observability.md:174 Stand Oktober 2026 | 20.10.2026
-13_observability.md:236 Stand Oktober 2026 | 19.10.2026
+12_multi_agent.md:480 Stand Oktober 2026 | 19.10.2026
+12_multi_agent.md:499 Stand Oktober 2026 | 09.04.2025, 23.06.2025, 27.08.2026, 26.05.2026
+13_observability.md:150 Stand Oktober 2026 | 05.05.2026, 20.10.2026, 12.06.2026, 04.08.2026
+13_observability.md:176 Stand Oktober 2026 | 20.10.2026
 14_cicd.md:28 Stand Oktober 2026 | 18.03.2026
 14_cicd.md:93 Stand Oktober 2026 | 20.10.2026, 14.10.2026
-14_cicd.md:540 Stand Oktober 2026 | 
-15_recht_governance.md:71 Stand Oktober 2026 | 27.07.2026, 19.10.2026, 01.08.2024, 02.02.2025, 02.08.2025, 27.07.2026, 02.08.2026, 02.12.2026, 02.08.2026, 02.12.2026, 02.12.2027, 02.08.2028, 02.08.2030, 19.05.2026, 29.07.2026
-15_recht_governance.md:172 Stand Oktober 2026 | 07.10.2026, 08.10.2026, 16.10.2026, 09.12.2026, 06.10.2025
-15_recht_governance.md:190 Stand Oktober 2026 | 15.01.2026
-16_portfolio.md:321 Stand Oktober 2026 | 03.09.2026, 18.09.2025
-16_portfolio.md:387 Stand Oktober 2026 | 
-Exit-Code 0
+14_cicd.md:542 Stand Oktober 2026 | 
+15_recht_governance.md:71 Stand Oktober 2026 | 27.07.2026, 19.10.2026, 19.05.2026, 29.07.2026
+15_recht_governance.md:179 Stand Oktober 2026 | 07.10.2026, 08.10.2026, 16.10.2026, 09.12.2026, 06.10.2025
+15_recht_governance.md:197 Stand Oktober 2026 | 15.01.2026
+16_portfolio.md:331 Stand Oktober 2026 | 
+16_portfolio.md:398 Stand Oktober 2026 | 
+D_leseliste.md:29 Stand Oktober 2026 | 
