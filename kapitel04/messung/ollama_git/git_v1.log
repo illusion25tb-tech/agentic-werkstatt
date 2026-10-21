@@ -1,0 +1,9 @@
+{"model": "phi4-mini:latest", "run": 0, "answer": "Der Gesamtwert des Stücks vor der Nachbestellung war 37.5, und nach der Nachbestellung beträgt der Gesamtwert 112.5 (da ", "steps": 6, "sec": 48.7}
+{"model": "phi4-mini:latest", "run": 1, "answer": "Es gibt keine Änderungen im Repository; der letzte Commit hat den Gesamtwert von Bestellung 4711 nicht verändert.", "steps": 8, "sec": 63.0}
+{"model": "phi4-mini:latest", "run": 2, "answer": "ABBRUCH: Wiederholung ohne Fortschritt", "steps": 10, "sec": 87.3}
+{"model": "gemma3:4b", "run": 0, "answer": "125.00", "steps": 4, "sec": 38.1}
+{"model": "gemma3:4b", "run": 1, "answer": "Ich kann den letzten Commit, der den Gesamtwert der Bestellung 4711 verändert hat, nicht ermitteln, da die Ausgabe des T", "steps": 4, "sec": 50.3}
+{"model": "gemma3:4b", "run": 2, "answer": "Der Gesamtwert der Bestellung 4711 beträgt 2 * 89.9 + 3 * 12.5 = 179.8 + 37.5 = 217.3", "steps": 6, "sec": 46.6}
+{"model": "llama3.2:3b", "run": 0, "answer": "", "steps": 9, "sec": 33.7}
+{"model": "llama3.2:3b", "run": 1, "answer": "3768.8", "steps": 4, "sec": 6.0}
+{"model": "llama3.2:3b", "run": 2, "answer": "ABBRUCH: Wiederholung ohne Fortschritt", "steps": 5, "sec": 8.8}

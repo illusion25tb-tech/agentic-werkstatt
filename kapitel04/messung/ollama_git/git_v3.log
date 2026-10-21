@@ -1,0 +1,9 @@
+{"model": "phi4-mini:latest", "run": 0, "answer": "", "steps": 4, "sec": 47.4}
+{"model": "phi4-mini:latest", "run": 1, "answer": "", "steps": 9, "sec": 61.0}
+{"model": "phi4-mini:latest", "run": 2, "answer": "ABBRUCH: Step-Budget erschöpft", "steps": 13, "sec": 133.0}
+{"model": "gemma3:4b", "run": 0, "answer": "Der Gesamtwert der Bestellung 4711 hat sich von 25,00 auf 37,50 erhöht.", "steps": 3, "sec": 44.4}
+{"model": "gemma3:4b", "run": 1, "answer": "Der Gesamtwert der Bestellung 4711 hat sich nicht verändert.", "steps": 4, "sec": 69.2}
+{"model": "gemma3:4b", "run": 2, "answer": "217.3", "steps": 4, "sec": 54.4}
+{"model": "llama3.2:3b", "run": 0, "answer": "0", "steps": 11, "sec": 43.8}
+{"model": "llama3.2:3b", "run": 1, "answer": "ABBRUCH: Step-Budget erschöpft", "steps": 13, "sec": 38.6}
+{"model": "llama3.2:3b", "run": 2, "answer": "ABBRUCH: Wiederholung ohne Fortschritt", "steps": 11, "sec": 16.1}

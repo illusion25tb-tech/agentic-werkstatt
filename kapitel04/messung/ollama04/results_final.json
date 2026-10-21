@@ -1,0 +1,146 @@
+[
+ {
+  "model": "phi4-mini:latest",
+  "variant": "final_happy",
+  "run": 0,
+  "answer": "Der Gesamtwert der Bestellung 4711 beträgt 217.3 Euro.",
+  "steps": 3,
+  "sec": 24.7
+ },
+ {
+  "model": "phi4-mini:latest",
+  "variant": "final_happy",
+  "run": 1,
+  "answer": "Der Gesamtwert der Bestellungen ist 217.3.",
+  "steps": 3,
+  "sec": 9.9
+ },
+ {
+  "model": "phi4-mini:latest",
+  "variant": "final_happy",
+  "run": 2,
+  "answer": "Der Gesamtwert der Bestellungen lautet 217.3 Euro.",
+  "steps": 3,
+  "sec": 12.5
+ },
+ {
+  "model": "phi4-mini:latest",
+  "variant": "final_break",
+  "run": 0,
+  "answer": "Der Gesamtwert der Bestellung 4711 beträgt 217.3.",
+  "steps": 5,
+  "sec": 24.2
+ },
+ {
+  "model": "phi4-mini:latest",
+  "variant": "final_break",
+  "run": 1,
+  "answer": "Der Gesamtwert der Bestellung 4711 beträgt 217.30.",
+  "steps": 5,
+  "sec": 28.5
+ },
+ {
+  "model": "phi4-mini:latest",
+  "variant": "final_break",
+  "run": 2,
+  "answer": "Der Gesamtwert der Bestellung 4711 beträgt 217.3.",
+  "steps": 5,
+  "sec": 20.2
+ },
+ {
+  "model": "gemma3:4b",
+  "variant": "final_happy",
+  "run": 0,
+  "answer": "217.3",
+  "steps": 3,
+  "sec": 32.3
+ },
+ {
+  "model": "gemma3:4b",
+  "variant": "final_happy",
+  "run": 1,
+  "answer": "217.3",
+  "steps": 3,
+  "sec": 22.1
+ },
+ {
+  "model": "gemma3:4b",
+  "variant": "final_happy",
+  "run": 2,
+  "answer": "",
+  "steps": 3,
+  "sec": 19.9
+ },
+ {
+  "model": "gemma3:4b",
+  "variant": "final_break",
+  "run": 0,
+  "answer": "217.3",
+  "steps": 5,
+  "sec": 50.3
+ },
+ {
+  "model": "gemma3:4b",
+  "variant": "final_break",
+  "run": 1,
+  "answer": "ABBRUCH: Step-Budget erschöpft",
+  "steps": 13,
+  "sec": 96.1
+ },
+ {
+  "model": "gemma3:4b",
+  "variant": "final_break",
+  "run": 2,
+  "answer": "217.3",
+  "steps": 5,
+  "sec": 62.1
+ },
+ {
+  "model": "llama3.2:3b",
+  "variant": "final_happy",
+  "run": 0,
+  "answer": "ABBRUCH: Wiederholung ohne Fortschritt",
+  "steps": 4,
+  "sec": 18.9
+ },
+ {
+  "model": "llama3.2:3b",
+  "variant": "final_happy",
+  "run": 1,
+  "answer": "217.3",
+  "steps": 4,
+  "sec": 6.9
+ },
+ {
+  "model": "llama3.2:3b",
+  "variant": "final_happy",
+  "run": 2,
+  "answer": "217.3",
+  "steps": 9,
+  "sec": 19.3
+ },
+ {
+  "model": "llama3.2:3b",
+  "variant": "final_break",
+  "run": 0,
+  "answer": "217.30",
+  "steps": 6,
+  "sec": 8.8
+ },
+ {
+  "model": "llama3.2:3b",
+  "variant": "final_break",
+  "run": 1,
+  "answer": "215.50",
+  "steps": 11,
+  "sec": 21.9
+ },
+ {
+  "model": "llama3.2:3b",
+  "variant": "final_break",
+  "run": 2,
+  "answer": "217.3",
+  "steps": 4,
+  "sec": 5.5
+ }
+]

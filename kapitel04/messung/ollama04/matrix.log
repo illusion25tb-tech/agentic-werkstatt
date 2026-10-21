@@ -1,0 +1,27 @@
+{"model": "gemma3:4b", "variant": "base_happy", "run": 0, "answer": "ABBRUCH: Step-Budget erschöpft", "steps": 13, "sec": 212.2}
+{"model": "gemma3:4b", "variant": "base_happy", "run": 1, "answer": "4711", "steps": 2, "sec": 28.7}
+{"model": "gemma3:4b", "variant": "base_happy", "run": 2, "answer": "", "steps": 3, "sec": 31.1}
+{"model": "gemma3:4b", "variant": "base_break", "run": 0, "answer": "ABBRUCH: Step-Budget erschöpft", "steps": 13, "sec": 170.5}
+{"model": "gemma3:4b", "variant": "base_break", "run": 1, "answer": "", "steps": 2, "sec": 46.8}
+{"model": "gemma3:4b", "variant": "base_break", "run": 2, "answer": "Ich kann den Wert der Bestellung 4711 aufgrund des Problems mit dem Zugriff auf ", "steps": 4, "sec": 63.5}
+{"model": "gemma3:4b", "variant": "hard_break", "run": 0, "answer": "Der Gesamtwert der Bestellung 4711 beträgt 245.35.", "steps": 4, "sec": 46.4}
+{"model": "gemma3:4b", "variant": "hard_break", "run": 1, "answer": "217.30", "steps": 6, "sec": 88.3}
+{"model": "gemma3:4b", "variant": "hard_break", "run": 2, "answer": "217.30", "steps": 5, "sec": 59.1}
+{"model": "llama3.2:3b", "variant": "base_happy", "run": 0, "answer": "217.3", "steps": 3, "sec": 57.3}
+{"model": "llama3.2:3b", "variant": "base_happy", "run": 1, "answer": "read_file(\"/workspace/4711.json\")|map(lambda x: x.replace(\"\\d\",\"\"))|map(str)|sum", "steps": 12, "sec": 26.8}
+{"model": "llama3.2:3b", "variant": "base_happy", "run": 2, "answer": "217.30", "steps": 4, "sec": 8.9}
+{"model": "llama3.2:3b", "variant": "base_break", "run": 0, "answer": "0", "steps": 4, "sec": 6.5}
+{"model": "llama3.2:3b", "variant": "base_break", "run": 1, "answer": "Die Datei konnte nicht gefunden werden", "steps": 4, "sec": 8.3}
+{"model": "llama3.2:3b", "variant": "base_break", "run": 2, "answer": "n/a", "steps": 6, "sec": 11.2}
+{"model": "llama3.2:3b", "variant": "hard_break", "run": 0, "answer": "217.3", "steps": 5, "sec": 7.8}
+{"model": "llama3.2:3b", "variant": "hard_break", "run": 1, "answer": "ABBRUCH: Wiederholung ohne Fortschritt", "steps": 7, "sec": 11.3}
+{"model": "llama3.2:3b", "variant": "hard_break", "run": 2, "answer": "217.30", "steps": 5, "sec": 9.8}
+{"model": "phi4-mini:latest", "variant": "base_happy", "run": 0, "answer": "Der Gesamtwert der Bestellung 4711 beträgt $217.30.", "steps": 3, "sec": 41.4}
+{"model": "phi4-mini:latest", "variant": "base_happy", "run": 1, "answer": "Der Gesamtwert der Bestellungen ist 217.3.", "steps": 3, "sec": 11.2}
+{"model": "phi4-mini:latest", "variant": "base_happy", "run": 2, "answer": "Der angegebene Pfad zur Datei scheint falsch zu sein. Bitte überprüfen Sie den P", "steps": 2, "sec": 11.9}
+{"model": "phi4-mini:latest", "variant": "base_break", "run": 0, "answer": "Die Datei 'bestellung_4711.json' kann nicht gefunden werden, da ein Fehler im Da", "steps": 9, "sec": 73.9}
+{"model": "phi4-mini:latest", "variant": "base_break", "run": 1, "answer": "ABBRUCH: Step-Budget erschöpft", "steps": 13, "sec": 85.9}
+{"model": "phi4-mini:latest", "variant": "base_break", "run": 2, "answer": "Der angegebene Dateipfad existiert nicht. Bitte überprüfen Sie den Dateipfad und", "steps": 2, "sec": 11.7}
+{"model": "phi4-mini:latest", "variant": "hard_break", "run": 0, "answer": "Der Gesamtwert der Bestellung 4711 beträgt 217.3 Euro.", "steps": 5, "sec": 31.7}
+{"model": "phi4-mini:latest", "variant": "hard_break", "run": 1, "answer": "Der Gesamtwert von Bestellung 4711 beträgt 217.30.", "steps": 5, "sec": 25.2}
+{"model": "phi4-mini:latest", "variant": "hard_break", "run": 2, "answer": "217.3", "steps": 8, "sec": 41.7}

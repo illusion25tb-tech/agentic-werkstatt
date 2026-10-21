@@ -1,0 +1,9 @@
+{"model": "phi4-mini:latest", "run": 0, "answer": "ABBRUCH: Wiederholung ohne Fortschritt", "steps": 4, "sec": 25.1}
+{"model": "phi4-mini:latest", "run": 1, "answer": "ABBRUCH: Wiederholung ohne Fortschritt", "steps": 12, "sec": 81.7}
+{"model": "phi4-mini:latest", "run": 2, "answer": "Es liegen keine Informationen vor, um den letzten Commit für Bestellung 4711 zu identifizieren. Bitte stellen Sie den sp", "steps": 4, "sec": 25.4}
+{"model": "gemma3:4b", "run": 0, "answer": "", "steps": 2, "sec": 24.7}
+{"model": "gemma3:4b", "run": 1, "answer": "217.3", "steps": 6, "sec": 51.5}
+{"model": "gemma3:4b", "run": 2, "answer": "Der Gesamtwert der Bestellung 4711 hat sich um 12,5 erhöht.", "steps": 4, "sec": 42.0}
+{"model": "llama3.2:3b", "run": 0, "answer": "ABBRUCH: Wiederholung ohne Fortschritt", "steps": 5, "sec": 14.3}
+{"model": "llama3.2:3b", "run": 1, "answer": "ABBRUCH: Wiederholung ohne Fortschritt", "steps": 12, "sec": 18.2}
+{"model": "llama3.2:3b", "run": 2, "answer": "ABBRUCH: Step-Budget erschöpft", "steps": 13, "sec": 15.4}

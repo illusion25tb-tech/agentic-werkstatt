@@ -1,0 +1,146 @@
+[
+ {
+  "model": "gemma3:4b",
+  "variant": "hard2_happy",
+  "run": 0,
+  "answer": "",
+  "steps": 2,
+  "sec": 42.0
+ },
+ {
+  "model": "gemma3:4b",
+  "variant": "hard2_happy",
+  "run": 1,
+  "answer": "0.04612608787943112",
+  "steps": 3,
+  "sec": 37.5
+ },
+ {
+  "model": "gemma3:4b",
+  "variant": "hard2_happy",
+  "run": 2,
+  "answer": "0.04612608787943112",
+  "steps": 4,
+  "sec": 43.1
+ },
+ {
+  "model": "gemma3:4b",
+  "variant": "hard2_break",
+  "run": 0,
+  "answer": "ABBRUCH: Step-Budget erschöpft",
+  "steps": 13,
+  "sec": 77.7
+ },
+ {
+  "model": "gemma3:4b",
+  "variant": "hard2_break",
+  "run": 1,
+  "answer": "217.30",
+  "steps": 5,
+  "sec": 56.5
+ },
+ {
+  "model": "gemma3:4b",
+  "variant": "hard2_break",
+  "run": 2,
+  "answer": "Der Gesamtwert der Bestellung 4711 beträgt 206.85.",
+  "steps": 5,
+  "sec": 44.1
+ },
+ {
+  "model": "llama3.2:3b",
+  "variant": "hard2_happy",
+  "run": 0,
+  "answer": "217.3",
+  "steps": 6,
+  "sec": 24.4
+ },
+ {
+  "model": "llama3.2:3b",
+  "variant": "hard2_happy",
+  "run": 1,
+  "answer": "ABBRUCH: Step-Budget erschöpft",
+  "steps": 13,
+  "sec": 21.1
+ },
+ {
+  "model": "llama3.2:3b",
+  "variant": "hard2_happy",
+  "run": 2,
+  "answer": "217.3",
+  "steps": 10,
+  "sec": 16.9
+ },
+ {
+  "model": "llama3.2:3b",
+  "variant": "hard2_break",
+  "run": 0,
+  "answer": "217.30",
+  "steps": 6,
+  "sec": 10.7
+ },
+ {
+  "model": "llama3.2:3b",
+  "variant": "hard2_break",
+  "run": 1,
+  "answer": "49465.5",
+  "steps": 2,
+  "sec": 3.2
+ },
+ {
+  "model": "llama3.2:3b",
+  "variant": "hard2_break",
+  "run": 2,
+  "answer": "217.3",
+  "steps": 6,
+  "sec": 8.9
+ },
+ {
+  "model": "phi4-mini:latest",
+  "variant": "hard2_happy",
+  "run": 0,
+  "answer": "217.3",
+  "steps": 3,
+  "sec": 24.3
+ },
+ {
+  "model": "phi4-mini:latest",
+  "variant": "hard2_happy",
+  "run": 1,
+  "answer": "ABBRUCH: Step-Budget erschöpft",
+  "steps": 13,
+  "sec": 95.3
+ },
+ {
+  "model": "phi4-mini:latest",
+  "variant": "hard2_happy",
+  "run": 2,
+  "answer": "Der Gesamtwert der Bestellung 4711 beträgt 217.3.",
+  "steps": 3,
+  "sec": 14.2
+ },
+ {
+  "model": "phi4-mini:latest",
+  "variant": "hard2_break",
+  "run": 0,
+  "answer": "ABBRUCH: Wiederholung ohne Fortschritt",
+  "steps": 4,
+  "sec": 22.0
+ },
+ {
+  "model": "phi4-mini:latest",
+  "variant": "hard2_break",
+  "run": 1,
+  "answer": "ABBRUCH: Wiederholung ohne Fortschritt",
+  "steps": 4,
+  "sec": 20.3
+ },
+ {
+  "model": "phi4-mini:latest",
+  "variant": "hard2_break",
+  "run": 2,
+  "answer": "ABBRUCH: Wiederholung ohne Fortschritt",
+  "steps": 4,
+  "sec": 19.3
+ }
+]

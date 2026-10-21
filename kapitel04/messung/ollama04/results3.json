@@ -1,0 +1,50 @@
+[
+ {
+  "model": "phi4-mini:latest",
+  "variant": "hard3_happy",
+  "run": 0,
+  "answer": "Der Gesamtwert der Bestellungen beträgt 217.3 Euro.",
+  "steps": 3,
+  "sec": 14.8
+ },
+ {
+  "model": "phi4-mini:latest",
+  "variant": "hard3_happy",
+  "run": 1,
+  "answer": "217.3",
+  "steps": 7,
+  "sec": 33.5
+ },
+ {
+  "model": "phi4-mini:latest",
+  "variant": "hard3_happy",
+  "run": 2,
+  "answer": "Der Gesamtwert der Bestellung 4711 beträgt 217.3.",
+  "steps": 3,
+  "sec": 14.2
+ },
+ {
+  "model": "phi4-mini:latest",
+  "variant": "hard3_break",
+  "run": 0,
+  "answer": "Der Gesamtwert der Bestellung 4711 beträgt 217.3.",
+  "steps": 6,
+  "sec": 28.7
+ },
+ {
+  "model": "phi4-mini:latest",
+  "variant": "hard3_break",
+  "run": 1,
+  "answer": "Das Verzeichnis workspace/ existiert nicht, daher kann ich die Datei bestellung_",
+  "steps": 3,
+  "sec": 21.2
+ },
+ {
+  "model": "phi4-mini:latest",
+  "variant": "hard3_break",
+  "run": 2,
+  "answer": "Das workspace/ Verzeichnis existiert nicht, daher kann ich den Gesamtwert der Be",
+  "steps": 3,
+  "sec": 20.9
+ }
+]
