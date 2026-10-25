@@ -32,3 +32,7 @@ Für echte Modellläufe erwartet `llm.py` einen OpenAI-kompatiblen Endpunkt, im 
 ## Versionen
 
 Getestete Versionen stehen in `VERSIONS.md`. Die Workflows unter `kapitel14/` liegen bewusst nicht im Wurzelordner `.github/` und laufen in diesem Repository nicht; kopieren Sie sie in Ihr eigenes Projekt.
+
+## Lizenz
+
+Der Code steht unter der MIT-Lizenz, siehe `LICENSE`. Der Buchtext selbst ist davon nicht erfasst.
